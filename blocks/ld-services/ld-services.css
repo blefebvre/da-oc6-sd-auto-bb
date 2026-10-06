@@ -1,0 +1,147 @@
+/* ld-services — values lifted from stardust/prototypes/en.css (.services, .services__tile,
+   .services__tile::before, .services__title-wrap, .services__title; ≤1080 stacked, ≤767 ramp).
+   Photos are decorative (desk-thumb-discovery-n / mob-thumb-discovery-n ≤1080) keyed by tile
+   position: 1 private, 2 personal, 3 residents, 4 business; retangulo-204 is the bottom scrim. */
+
+.ld-services {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  min-height: 620px;
+  overflow: hidden;
+}
+
+.ld-services .ld-services-tile {
+  display: flex;
+  position: relative;
+  flex: 0 1 25%;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.ld-services .ld-services-tile::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  opacity: 0.96;
+  background-image: url("retangulo-204.png");
+  background-position: bottom center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.ld-services .ld-services-tile:nth-child(1) {
+  background-image: url("desk-thumb-discovery-2-8c5df384.jpg");
+}
+
+.ld-services .ld-services-tile:nth-child(1)::before {
+  opacity: 1;
+  background-size: cover;
+}
+
+.ld-services .ld-services-tile:nth-child(2) {
+  background-image: url("desk-thumb-discovery-1-884882da.jpg");
+}
+
+.ld-services .ld-services-tile:nth-child(3) {
+  background-image: url("desk-thumb-discovery-4-a8ca0611.jpg");
+}
+
+.ld-services .ld-services-tile:nth-child(4) {
+  background-image: url("desk-thumb-discovery-3-9d6d0e24.jpg");
+}
+
+.ld-services .ld-services-title-wrap {
+  position: relative;
+  z-index: 1;
+  padding: 0 0 40px;
+}
+
+.ld-services .ld-services-title-wrap :is(p, h2, h3, h4) {
+  margin: 0;
+  color: var(--c-white);
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 40px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* the link fills the title line (live: the title <p> is the measured 356×40 text box) */
+.ld-services .ld-services-title-wrap a:any-link {
+  display: block;
+  width: 100%;
+  color: inherit;
+  text-decoration: none;
+}
+
+/* the whole tile is the link target (live: the tile itself is the <a>) */
+.ld-services .ld-services-title-wrap a:any-link::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+}
+
+@media (width <= 1080px) {
+  .ld-services {
+    flex-direction: column;
+  }
+
+  .ld-services .ld-services-tile {
+    flex: 0 0 auto;
+    width: 100%;
+    min-height: 381px;
+    margin-top: 20px;
+  }
+
+  .ld-services .ld-services-tile:nth-child(1) {
+    margin-top: 0;
+    background-image: url("mob-thumb-discovery-1.jpg");
+  }
+
+  .ld-services .ld-services-tile::before {
+    background-size: cover;
+  }
+
+  .ld-services .ld-services-tile:nth-child(2) {
+    background-image: url("mob-thumb-discovery-2.jpg");
+  }
+
+  .ld-services .ld-services-tile:nth-child(3) {
+    background-image: url("mob-thumb-discovery-3.jpg");
+  }
+
+  .ld-services .ld-services-tile:nth-child(4) {
+    background-image: url("mob-thumb-discovery-4.jpg");
+  }
+}
+
+@media (width <= 767px) {
+  .ld-services {
+    min-height: 850px;
+  }
+
+  .ld-services .ld-services-tile {
+    min-height: 301px;
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
+
+  .ld-services .ld-services-tile:last-child {
+    margin-bottom: 0;
+  }
+
+  .ld-services .ld-services-title-wrap {
+    padding-bottom: 20px;
+  }
+
+  .ld-services .ld-services-title-wrap :is(p, h2, h3, h4) {
+    font-size: 22px;
+  }
+}

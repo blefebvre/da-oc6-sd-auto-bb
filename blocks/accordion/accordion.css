@@ -1,0 +1,99 @@
+/* accordion — Elementor nested accordion (e-n-accordion) on the article template:
+   title row with a chevron, red-dot icon headings inside the body. */
+
+.accordion {
+  margin: 10px 0 30px;
+}
+
+/* live e-n-accordion-item: items 10px apart (--n-accordion-item-title-space-between), no borders */
+.accordion details {
+  margin: 0 0 10px;
+}
+
+.accordion details:last-of-type {
+  margin-bottom: 0;
+}
+
+.accordion summary {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 10px 20px;
+  border-radius: 20px;
+  background: rgb(217 217 217 / 30%);
+  list-style: none;
+  cursor: pointer;
+  font-size: 28px;
+  line-height: 1.65;
+  font-weight: 500;
+  color: #cc092f;
+}
+
+.accordion summary::-webkit-details-marker {
+  display: none;
+}
+
+.accordion summary p {
+  margin: 0;
+}
+
+.accordion summary::after {
+  content: "";
+  position: absolute;
+  right: 24px;
+  top: 50%;
+  width: 10px;
+  height: 10px;
+  border-right: 2px solid #cc092f;
+  border-bottom: 2px solid #cc092f;
+  transform: translateY(-70%) rotate(45deg);
+  transition: transform 0.2s ease;
+}
+
+.accordion details[open] > summary::after {
+  transform: translateY(-30%) rotate(225deg);
+}
+
+/* live item body e-con: white, radius 20px, padding 50px (25px at <= 767px) */
+.accordion .accordion-item-body {
+  padding: 50px;
+  border-radius: 20px;
+  background: #fff;
+}
+
+.accordion .accordion-item-body h2 {
+  margin: 20px 0 10px;
+  font-size: 22px;
+  line-height: 1.3;
+  font-weight: 500;
+  color: #535353;
+}
+
+.accordion .accordion-item-body h2 .icon {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+.accordion .accordion-item-body h2 .icon img {
+  width: 15px;
+  height: 15px;
+}
+
+.accordion .accordion-item-body p {
+  margin: 0 0 16px;
+}
+
+@media (width <= 767px) {
+  .accordion summary {
+    font-size: 20px;
+  }
+
+  .accordion .accordion-item-body {
+    padding: 25px;
+  }
+}

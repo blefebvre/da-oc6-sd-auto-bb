@@ -1,0 +1,345 @@
+/* pb-hero — values lifted from stardust/prototypes/en-personal-bank.css (.pb-hero, .pb-hero__video,
+   .pb-hero__title, .pb-hero__lead; mobile variant ≤767). The Vimeo player is an embed passthrough
+   (desktop 16:9 id, mobile 9:16 id); the 20 % black overlay is ::after; the bar after the hero is canon .bar. */
+
+.pb-hero {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 20px;
+  min-height: 86vh;
+  padding: 0 0 60px 60px;
+  overflow: hidden;
+  background-color: var(--c-black);
+}
+
+.pb-hero .pb-hero-video {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.pb-hero .pb-hero-video iframe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: auto;
+  min-width: 100%;
+  height: auto;
+  min-height: 100%;
+  transform: translate(-50%, -50%);
+  border: 0;
+  aspect-ratio: 16 / 9;
+}
+
+.pb-hero .pb-hero-frame-mb {
+  display: none;
+}
+
+.pb-hero::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  opacity: 0.2;
+  background-color: #000;
+  pointer-events: none;
+}
+
+.pb-hero .pb-hero-body {
+  display: flex;
+  position: relative;
+  z-index: 2;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.pb-hero .pb-hero-title {
+  margin: 0;
+  color: var(--c-white);
+  font-size: 50px;
+  font-weight: 400;
+  line-height: 1em;
+  text-align: start;
+}
+
+.pb-hero .pb-hero-lead {
+  width: 49%;
+  max-width: 49%;
+  margin: 0;
+  color: var(--c-white);
+  font-size: 30px;
+  line-height: 1.3em;
+}
+
+@media (width <= 767px) {
+  .pb-hero {
+    min-height: 85vh;
+    padding: 0 0 30px 30px;
+  }
+
+  .pb-hero .pb-hero-video iframe {
+    aspect-ratio: 9 / 16;
+  }
+
+  .pb-hero .pb-hero-frame-dt:not(:only-child) {
+    display: none;
+  }
+
+  .pb-hero .pb-hero-frame-mb {
+    display: block;
+  }
+
+  .pb-hero .pb-hero-title {
+    font-size: 26px;
+    line-height: 30px;
+  }
+
+  .pb-hero .pb-hero-lead {
+    width: 266px;
+    max-width: 266px;
+    font-size: 20px;
+  }
+
+  body.program .bar:not(.bar-mobile-slim) {
+    margin-top: -1px;
+  }
+}
+
+/* --- sibling variants: `video` (hosted mp4 instead of the Vimeo players; same 16:9 stage) and
+   `plain` (no player: title 40px/400 from post-22830.css, decorative pictures in flow). */
+.pb-hero .pb-hero-mp4 {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pb-hero.video .pb-hero-title,
+.pb-hero.plain .pb-hero-title {
+  font-size: 40px;
+  font-weight: 400;
+}
+
+.pb-hero.plain {
+  min-height: 0;
+  height: auto;
+  padding: 60px 30px;
+  background: none;
+}
+
+.pb-hero.plain .pb-hero-video {
+  display: none;
+}
+
+.pb-hero.plain .pb-hero-body {
+  position: static;
+  gap: 20px;
+}
+
+.pb-hero .pb-hero-pic {
+  margin: 0;
+}
+
+.pb-hero .pb-hero-pic img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+}
+
+@media (width <= 767px) {
+  .pb-hero.video .pb-hero-title,
+  .pb-hero.plain .pb-hero-title {
+    font-size: 28px;
+  }
+}
+
+/* --- generated: sibling hero heights (band-styles.mjs --css) --- */
+
+/* 2ac1894 — en-bradesco-lounge, es-bradesco-lounge2, pt-bradesco-lounge */
+.pb-hero.b-2ac1894 {
+  min-height: 85vh;
+}
+
+@media (width <= 767px) {
+  .pb-hero.b-2ac1894 {
+    min-height: 85vh;
+  }
+}
+
+/* 59c64c7 — en-certificate-of-deposit-bradesco */
+.pb-hero.b-59c64c7 {
+  min-height: 85vh;
+}
+
+@media (width <= 767px) {
+  .pb-hero.b-59c64c7 {
+    min-height: 85vh;
+  }
+}
+
+/* cb27143 — en-corporate, en-institutional, es-corporate, es-institutional, pt-corporate, pt-institucional */
+.pb-hero.b-cb27143 {
+  min-height: 85vh;
+}
+
+@media (width <= 767px) {
+  .pb-hero.b-cb27143 {
+    min-height: 85vh;
+  }
+}
+
+/* ae7b4e1 — en-credit-card-signature-gold, es-tarjeta-de-credito-signature-gold, pt-cartao-de-credito-signature-gold */
+.pb-hero.b-ae7b4e1 {
+  min-height: 746px;
+}
+
+@media (width <= 767px) {
+  .pb-hero.b-ae7b4e1 {
+    min-height: 638px;
+  }
+}
+
+.pb-hero.b-ae7b4e1 h1 {
+  font-size: 40px;
+  line-height: 40px;
+}
+
+@media (width <= 767px) {
+  .pb-hero.b-ae7b4e1 h1 {
+    font-size: 30px;
+    line-height: 30px;
+  }
+}
+
+/* 5d04821 — en-credit-cards, es-tarjetas-de-credito, pt-cartoes-de-credito */
+.pb-hero.b-5d04821 {
+  min-height: 746px;
+}
+
+@media (width <= 767px) {
+  .pb-hero.b-5d04821 {
+    min-height: 638px;
+  }
+}
+
+.pb-hero.b-5d04821 h1 {
+  font-size: 40px;
+  line-height: 40px;
+}
+
+@media (width <= 767px) {
+  .pb-hero.b-5d04821 h1 {
+    font-size: 30px;
+    line-height: 30px;
+  }
+}
+
+/* 112f6d8 — en-personal-bank, es-personal-bank, pt-personal-bank */
+.pb-hero.b-112f6d8 {
+  min-height: 86vh;
+}
+
+@media (width <= 767px) {
+  .pb-hero.b-112f6d8 {
+    min-height: 85vh;
+  }
+}
+
+/* 5c6ea91 — en-private-bank, es-private-bank, pt-private-bank */
+.pb-hero.b-5c6ea91 {
+  min-height: 85vh;
+}
+
+@media (width <= 767px) {
+  .pb-hero.b-5c6ea91 {
+    min-height: 85vh;
+  }
+}
+
+.pb-hero.b-5c6ea91 h1 {
+  font-size: 35px;
+  line-height: 42px;
+}
+
+/* c9f3a87 — en-real-estate, es-bienes-raices, pt-imoveis */
+.pb-hero.b-c9f3a87 {
+  min-height: 765px;
+}
+
+@media (width <= 767px) {
+  .pb-hero.b-c9f3a87 {
+    min-height: 765px;
+  }
+}
+
+.pb-hero.b-c9f3a87 h1 {
+  font-size: 40px;
+  line-height: 45px;
+}
+
+@media (width <= 767px) {
+  .pb-hero.b-c9f3a87 h1 {
+    font-size: 26px;
+    line-height: 30px;
+  }
+}
+
+/* eb18198 — en-zelle, es-zelle, pt-zelle */
+.pb-hero.b-eb18198 {
+  min-height: 85vh;
+}
+
+@media (width <= 767px) {
+  .pb-hero.b-eb18198 {
+    min-height: 85vh;
+  }
+}
+
+.pb-hero.b-eb18198 p:has(> picture > img[alt="Vetor sup 1"], > img[alt="Vetor sup 1"], > picture > img[alt="Vetor sup"], > img[alt="Vetor sup"]) {
+  position: absolute;
+  margin: 0;
+  top: -10px;
+  right: -21px;
+  left: -21px;
+}
+
+@media (width <= 767px) {
+  .pb-hero.b-eb18198 p:has(> picture > img[alt="Vetor sup 1"], > img[alt="Vetor sup 1"], > picture > img[alt="Vetor sup"], > img[alt="Vetor sup"]) {
+    display: none;
+  }
+}
+
+.pb-hero.b-eb18198 p:has(> picture > img[alt="Vetor inf 1"], > img[alt="Vetor inf 1"], > picture > img[alt="Vetor inf"], > img[alt="Vetor inf"]) {
+  position: absolute;
+  margin: 0;
+  right: -21px;
+  bottom: -6px;
+  left: -21px;
+}
+
+@media (width <= 767px) {
+  .pb-hero.b-eb18198 p:has(> picture > img[alt="Vetor inf 1"], > img[alt="Vetor inf 1"], > picture > img[alt="Vetor inf"], > img[alt="Vetor inf"]) {
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+}
+
+.pb-hero.b-eb18198 h1 {
+  font-size: 50px;
+  line-height: 50px;
+}
+
+@media (width <= 767px) {
+  .pb-hero.b-eb18198 h1 {
+    font-size: 27px;
+    line-height: 27px;
+  }
+}
+/* --- end generated --- */

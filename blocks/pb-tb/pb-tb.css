@@ -1,0 +1,150 @@
+/* pb-tb — values lifted from stardust/prototypes/en-personal-bank.css (.pb-faq*, .pb-decor,
+   .btn--primary). The two corner graphics are decorative (CSS, files in this folder). */
+
+.pb-tb {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 65px;
+  padding: 90px 0;
+  background-color: var(--c-grey);
+}
+
+.pb-tb::before,
+.pb-tb::after {
+  content: "";
+  position: absolute;
+  z-index: 99;
+  background-repeat: no-repeat;
+  background-size: contain;
+  pointer-events: none;
+}
+
+.pb-tb::before {
+  top: -45px;
+  left: -50px;
+  width: 180px;
+  height: 180px;
+  background-image: url("image-3-c12202e9.webp");
+}
+
+.pb-tb::after {
+  right: -72px;
+  bottom: -70px;
+  width: 167px;
+  height: 145px;
+  background-image: url("caminho-12-46fec9bd.png");
+  background-position: right;
+}
+
+.pb-tb .pb-econ {
+  display: flex;
+  position: relative;
+  flex: 0 1 auto;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  min-width: 0;
+  padding: 10px;
+}
+
+.pb-tb .pb-tb-row {
+  flex-direction: row;
+  padding: 0 20px;
+}
+
+.pb-tb .pb-tb-intro {
+  flex: 0 0 35%;
+  width: 35%;
+}
+
+.pb-tb .pb-tb-title {
+  margin: 0;
+  font-size: 30px;
+  line-height: 1.2em;
+}
+
+.pb-tb .pb-btn-end {
+  align-self: flex-start;
+  margin: 0;
+}
+
+.pb-tb .pb-tb-topics {
+  flex-flow: row wrap;
+  align-self: center;
+  gap: 0;
+  width: 65%;
+  padding: 0;
+}
+
+.pb-tb .pb-tb-cell {
+  flex: 0 1 50%;
+  width: 50%;
+}
+
+.pb-tb .pb-tb-topic {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 20px;
+  border-bottom: 8px solid #d00;
+  border-radius: 0;
+  background: var(--c-white);
+  color: var(--c-text);
+  font-family: var(--font-brand);
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 22px;
+  letter-spacing: normal;
+  text-align: center;
+  text-decoration: none;
+}
+
+@media (width <= 1080px) {
+  .pb-tb::before {
+    top: -24px;
+    width: 108px;
+    height: 108px;
+  }
+
+  .pb-tb::after {
+    width: 100px;
+    height: 87px;
+  }
+
+  .pb-tb .pb-tb-intro {
+    flex-basis: 324.5px;
+    width: 324.5px;
+  }
+}
+
+@media (width <= 767px) {
+  .pb-tb::before {
+    top: -47px;
+  }
+
+  .pb-tb::after {
+    right: -20px;
+    bottom: -50px;
+  }
+
+  .pb-tb .pb-tb-row,
+  .pb-tb .pb-tb-topics {
+    flex-wrap: wrap;
+  }
+
+  .pb-tb .pb-tb-intro {
+    flex: 0 0 100%;
+    width: 100%;
+  }
+
+  .pb-tb .pb-tb-topics {
+    width: 100%;
+  }
+
+  .pb-tb .pb-tb-cell {
+    flex-basis: 100%;
+    width: 100%;
+  }
+}

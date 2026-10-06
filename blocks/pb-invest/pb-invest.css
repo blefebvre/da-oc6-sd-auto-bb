@@ -1,0 +1,382 @@
+/* pb-invest — values lifted from stardust/prototypes/en-personal-bank.css (.pb-invest*, .pb-badge,
+   .btn--invert; ≤1380, ≤1101, mobile variant ≤767 incl. the main-agent fixes: label 340px + 10px
+   margin, --narrow 90px, icon img display:block). Icons are editorial (authored, DA media/program). */
+
+.pb-invest {
+  display: flex;
+  flex-direction: row;
+  gap: 0;
+  margin-top: 19px;
+  background-color: var(--c-red);
+}
+
+.pb-invest .pb-econ {
+  display: flex;
+  position: relative;
+  flex: 0 1 auto;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  min-width: 0;
+  padding: 10px;
+}
+
+.pb-invest .pb-invest-intro {
+  flex: 0 0 23%;
+  justify-content: center;
+  width: 23%;
+  min-height: 365px;
+  padding: 70px 5px 70px 30px;
+}
+
+.pb-invest .pb-invest-title {
+  margin: 0;
+  color: var(--c-white);
+  font-size: 31px;
+  line-height: 1.2em;
+}
+
+/* pt: the live page uses its own intro container (65f6211, not the en/es 03be253) — widgets 227 px wide
+   at x 60, so "Oportunidades<br>de Investimento*" runs 3 lines (unit 19, measure u19-m5) */
+@media (width >= 768px) {
+  :lang(pt) .pb-invest .pb-invest-intro {
+    padding-left: 60px;
+  }
+
+  :lang(pt) .pb-invest .pb-invest-intro > * {
+    max-width: 227px;
+  }
+
+  /* the live CTA fills that 227 px column at one line (42 px); the archetype button's padding
+     would wrap "SAIBA MAIS" inside it */
+  :lang(pt) .pb-invest .pb-invest-intro .pb-btn-end {
+    width: 100%;
+  }
+
+  :lang(pt) .pb-invest .pb-invest-intro .pb-btn-end .button {
+    box-sizing: border-box;
+    width: 100%;
+    padding-right: 0;
+    padding-left: 0;
+    text-align: center;
+  }
+}
+
+.pb-invest .pb-invest-text {
+  width: 245px;
+  max-width: 245px;
+  margin: 0;
+  color: var(--c-white);
+  font-size: 18px;
+  line-height: 1.5em;
+}
+
+/* mobile-only CTA (cell 2 of row 1, see pb-invest.js) */
+.pb-invest .pb-btn-end-mb {
+  display: none;
+}
+
+.pb-invest .pb-invest-text-mb {
+  display: none;
+}
+
+.pb-invest .pb-invest-note {
+  width: 280px;
+  max-width: 280px;
+  margin: 0;
+  color: var(--c-white);
+  font-size: 14px;
+  line-height: 1.2em;
+}
+
+.pb-invest .pb-invest-note em {
+  font-style: italic;
+}
+
+.pb-invest .pb-btn-end {
+  align-self: flex-start;
+  margin: 0;
+}
+
+.pb-invest a.button.invert {
+  background-color: var(--c-white);
+  color: var(--c-red);
+}
+
+.pb-invest a.button.invert:hover,
+.pb-invest a.button.invert:focus {
+  background-color: #f2f5f7;
+  color: var(--c-red);
+}
+
+.pb-invest .pb-invest-grid {
+  flex: 0 0 72.956%;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 72.956%;
+  min-height: 403px;
+  margin-right: 25px;
+}
+
+.pb-invest .pb-invest-cell {
+  min-height: 161px;
+  background-color: var(--c-white);
+}
+
+.pb-invest .pb-invest-cell-p {
+  padding: 10px 10px 0;
+}
+
+.pb-invest .pb-invest-pic {
+  margin: 5px;
+  text-align: end;
+}
+
+.pb-invest .pb-invest-pic img {
+  display: block;
+  width: 35px;
+  height: auto;
+  margin-left: auto;
+}
+
+.pb-invest .pb-invest-row {
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 20px;
+  padding: 0;
+}
+
+.pb-invest .pb-invest-row-between {
+  justify-content: space-between;
+}
+
+.pb-invest .pb-invest-row > * {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.pb-invest .pb-invest-label {
+  width: 340px;
+  max-width: calc(100% - 10px);
+  margin: 0 0 0 10px;
+  padding: 0;
+  font-size: 22px;
+  line-height: 1.3em;
+  text-align: start;
+}
+
+.pb-invest .pb-invest-cell-p .pb-invest-label {
+  width: 90px;
+  max-width: 90px;
+}
+
+.pb-invest .pb-invest-badge {
+  margin: 0;
+  line-height: 0;
+}
+
+.pb-invest .pb-invest-badge > :is(span, em) {
+  display: inline-block;
+  width: 71px;
+  margin: 6px 0 0;
+  padding: 3px;
+  border: 1px solid var(--c-red);
+  color: var(--c-red);
+  font-size: 10px;
+  line-height: 1.65;
+  text-align: center;
+  overflow-wrap: break-word;
+}
+
+.pb-invest .pb-invest-badge em {
+  font-style: normal;
+}
+
+.pb-invest .pb-invest-badge-mb {
+  display: none;
+}
+
+@media (width <= 1380px) {
+  .pb-invest .pb-invest-intro {
+    flex-basis: 20.964%;
+    justify-content: center;
+    width: 20.964%;
+    padding: 20px;
+  }
+
+  .pb-invest .pb-invest-grid {
+    flex-basis: 76%;
+    gap: 5px;
+    width: 76%;
+  }
+
+  .pb-invest .pb-invest-label {
+    width: 350px;
+    max-width: 100%;
+    margin: 0;
+  }
+
+  .pb-invest .pb-invest-cell-p .pb-invest-label {
+    width: 100px;
+    max-width: 100px;
+  }
+}
+
+@media (width <= 1101px) {
+  .pb-invest .pb-invest-intro {
+    flex-direction: column;
+    justify-content: center;
+    padding: 30px;
+  }
+
+  .pb-invest .pb-invest-text {
+    line-height: 1.2em;
+  }
+}
+
+@media (width <= 1080px) {
+  .pb-invest .pb-invest-label {
+    font-size: 18px;
+  }
+}
+
+@media (width <= 767px) {
+  .pb-invest {
+    flex-direction: column;
+    gap: 0;
+    margin: 0;
+    padding: 25px 20px 50px;
+  }
+
+  .pb-invest .pb-invest-intro {
+    flex-basis: auto;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    width: 100%;
+    min-height: 0;
+    margin: 25px 0 0;
+    padding: 0 0 30px;
+  }
+
+  .pb-invest .pb-invest-title {
+    width: 100%;
+    max-width: 100%;
+    font-size: 22px;
+    line-height: 1.6em;
+  }
+
+  .pb-invest .pb-invest-text {
+    align-self: center;
+    width: 252px;
+    max-width: 252px;
+    font-size: 18px;
+    line-height: 1.5em;
+  }
+
+  .pb-invest .pb-invest-text-mb {
+    display: block;
+  }
+
+  .pb-invest .pb-btn-end-mb {
+    display: block;
+  }
+
+  .pb-invest .pb-btn-end-dt {
+    display: none;
+  }
+
+  .pb-invest .pb-invest-text-dt:not(:only-of-type) {
+    display: none;
+  }
+
+  .pb-invest .pb-invest-grid {
+    flex-basis: auto;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+  }
+
+  .pb-invest .pb-invest-cell {
+    flex-basis: 47%;
+    gap: 0;
+    width: 47%;
+    min-height: 119px;
+  }
+
+  .pb-invest .pb-invest-cell-p {
+    padding: 0 5px;
+  }
+
+  .pb-invest .pb-invest-row {
+    flex-direction: column-reverse;
+    gap: 0;
+  }
+
+  .pb-invest .pb-invest-pic {
+    margin: 0 0 15px;
+  }
+
+  .pb-invest .pb-invest-cell-p .pb-invest-pic {
+    margin: 5px;
+  }
+
+  .pb-invest .pb-invest-pic img {
+    width: 32%;
+  }
+
+  .pb-invest .pb-invest-cell-p .pb-invest-pic img {
+    width: 37%;
+  }
+
+  .pb-invest .pb-invest-badge {
+    margin: -20px 0 0;
+  }
+
+  .pb-invest .pb-invest-badge > :is(span, em) {
+    width: 75px;
+    margin: 0;
+  }
+
+  .pb-invest .pb-invest-badge-mb {
+    display: inline-block;
+  }
+
+  .pb-invest .pb-invest-label,
+  .pb-invest .pb-invest-cell-p .pb-invest-label {
+    width: 179px;
+    max-width: 179px;
+    margin: 0;
+    padding: 0 0 0 2px;
+    font-size: 18px;
+  }
+
+  .pb-invest .pb-invest-cell-p .pb-invest-label {
+    margin: -15px 0 0;
+    padding: 0 0 0 7px;
+  }
+
+  .pb-invest .pb-invest-foot {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    gap: 10px;
+    width: 100%;
+    min-height: 0;
+    margin: 0 0 15px;
+    padding: 25px 0 0;
+  }
+
+  .pb-invest .pb-invest-foot .pb-btn-end {
+    order: 99999;
+  }
+
+  .pb-invest .pb-invest-note {
+    font-size: 14px;
+  }
+}

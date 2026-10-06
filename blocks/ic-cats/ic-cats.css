@@ -1,0 +1,154 @@
+/* ic-cats — values lifted from stardust/prototypes/en-investments-content.css (.ic-cats, .ic-cat,
+   .ic-cat--edu / --mkt, .ic-cat__inner / __title / __desc / __cta; ≤1080 stacked 487 px, ≤767
+   340 px ramp). The two cover photos are decorative, keyed by banner position. Widget-level text
+   → brand font (live .elementor-widget-container { font-family: BradescoSans }). */
+
+.ic-cats {
+  display: flex;
+  flex-direction: row;
+  gap: var(--e-gap);
+  min-height: 500px;
+  padding: 0 0 20px;
+}
+
+.ic-cats .ic-cat {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 9px;
+  padding: 70px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.ic-cats .ic-cat:nth-child(odd) {
+  flex: 0 0 50%;
+  background-image: url("bg-section-category-educational-a3fcf71b.webp");
+  background-position: center center;
+}
+
+.ic-cats .ic-cat:nth-child(even) {
+  flex: 0 1 50%;
+  align-items: flex-start;
+  background-image: url("bg-section-category-market-insight-8a9f614c.webp");
+  background-position: center right;
+}
+
+.ic-cats .ic-cat-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* live custom class .discovery-product { min-height: 160px !important } (page inline style) */
+@media (width >= 1100px) {
+  .ic-cats .ic-cat-inner {
+    min-height: 160px;
+  }
+}
+
+.ic-cats .ic-cat-title {
+  color: var(--c-white);
+  font-family: var(--font-brand);
+  font-size: 32px;
+  line-height: 55px;
+  font-weight: 500;
+}
+
+.ic-cats .ic-cat-title > * {
+  margin: 0;
+  padding: 0;
+  color: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  font-weight: inherit;
+}
+
+.ic-cats .ic-cat-desc {
+  flex: 0 0 auto;
+  width: 65.164%;
+  max-width: 65.164%;
+  color: var(--c-white);
+  font-family: var(--font-brand);
+  font-size: 18px;
+  line-height: 23px;
+}
+
+.ic-cats .ic-cat-desc > * {
+  margin: 0;
+}
+
+.ic-cats .ic-cat-cta {
+  align-self: flex-start;
+  margin: 0;
+}
+
+/* observed (motion-observe): the kit button on this page has NO hover change */
+.ic-cats .ic-cat-cta a.button:hover,
+.ic-cats .ic-cat-cta a.button:focus {
+  background-color: var(--c-button);
+  color: var(--c-white);
+}
+
+@media (width >= 768px) and (width <= 1080px) {
+  .ic-cats .ic-cat:nth-child(odd),
+  .ic-cats .ic-cat:nth-child(even) {
+    flex-basis: 100%;
+  }
+}
+
+@media (width <= 1080px) {
+  .ic-cats {
+    flex-direction: column;
+    align-items: center;
+    padding: 0 20px;
+  }
+
+  .ic-cats .ic-cat {
+    min-height: 487px;
+    padding: 32px;
+  }
+
+  .ic-cats .ic-cat-title {
+    font-size: 35px;
+  }
+}
+
+@media (width <= 767px) {
+  .ic-cats {
+    padding: 0;
+  }
+
+  .ic-cats .ic-cat {
+    gap: 5px;
+    min-height: 340px;
+    padding: 140px 20px 20px;
+  }
+
+  .ic-cats .ic-cat:nth-child(even) {
+    gap: 5px 0;
+  }
+
+  .ic-cats .ic-cat-title {
+    font-size: 22px;
+    line-height: 27px;
+  }
+
+  .ic-cats .ic-cat-desc {
+    width: 100%;
+    max-width: 100%;
+    padding: 0 0 10px;
+    font-size: 14px;
+    line-height: 20px;
+  }
+}
+
+/* variant `wide-desc` (es listing sibling): the market-insight description widget d283af7 on
+   /es/guia-inversiones is `width: 75%; max-width: 75%` (post-13205.css); en/pt use 65.164 %;
+   ≤767 the live widget is 100 % like the base rule; measured p 420 of 560 at 1440 (build 365). */
+@media (width >= 768px) {
+  .ic-cats.wide-desc .ic-cat:nth-child(even) .ic-cat-desc {
+    width: 75%;
+    max-width: 75%;
+  }
+}

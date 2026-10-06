@@ -1,0 +1,194 @@
+/* ac-close — values lifted from stardust/prototypes/en-visa-gold-activation.css (.ac-close*,
+   .ac-button--grey; breakpoints 1380 / 1080 / 767 as on live). The boxed text uses the foundation
+   .e-inner (the 88vw rule gives the live 317 px at 360). The control pill (page rule 1841852 +
+   .elementor-button: 18px / 400 / 1.3 tracking / radius 41 / 12px 25px, white on #A9A9A9) styles
+   both the non-link <strong> label and a sibling's a.button.
+   EW2: authored texts are styled by wrapper-DESCENDANT selectors (the editor swap nests them). */
+
+/* 8685a5c: e-con-full row, centred, padding 50 20 80, gap 20 */
+.ac-close {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+  max-width: 100%;
+  padding: 50px 20px 80px;
+}
+
+.ac-close .ac-widget {
+  position: relative;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.ac-close .ac-body {
+  font-family: var(--font-brand);
+}
+
+.ac-close .ac-body :is(h1, h2, h3, h4, p) {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-brand);
+}
+
+/* media (6d1b7dd): width 50%, flex 0 0, default padding 10; img 65% centred (f7e1a64) */
+.ac-close .ac-close-media {
+  display: flex;
+  position: relative;
+  flex: 0 0 auto;
+  flex-direction: column;
+  gap: 20px;
+  width: 50%;
+  min-width: 0;
+  padding: 10px;
+}
+
+.ac-close .ac-close-image {
+  width: 100%;
+  text-align: center;
+}
+
+.ac-close .ac-close-image img {
+  display: inline-block;
+  width: 65%;
+  max-width: 100%;
+  height: auto;
+  border: 0;
+  vertical-align: middle;
+}
+
+/* boxed text (611aefd): width 100% shrink, padding-left 30; inner column, justify center, gap 0 */
+.ac-close .ac-close-text {
+  display: flex;
+  position: relative;
+  flex: 0 1 auto;
+  flex-direction: column;
+  width: 100%;
+  min-width: 0;
+  padding: 0 0 0 30px;
+}
+
+.ac-close .ac-close-inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0;
+  height: 100%;
+}
+
+/* 9a669d1: 30/35 #575757 */
+.ac-close .ac-close-title {
+  flex: 0 0 auto;
+}
+
+.ac-close .ac-close-title :is(h1, h2, h3, h4, p) {
+  color: #575757;
+  font-size: 30px;
+  font-weight: 400;
+  line-height: 35px;
+}
+
+/* 1841852: container padding-top 17 */
+.ac-close .ac-close-cta .ac-body {
+  padding: 17px 0 0;
+}
+
+.ac-close .ac-close-cta :is(strong, a:any-link) {
+  display: inline-block;
+  max-width: 100%;
+  margin: 0;
+  border: 0;
+  border-radius: 41px;
+  padding: 12px 25px;
+  background-color: #a9a9a9;
+  color: var(--c-white);
+  font-family: var(--font-brand);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 1.3px;
+  text-align: center;
+  text-decoration: none;
+  text-transform: none;
+  transition: all 0.3s;
+}
+
+/* popup control (cluster unit, blocks/ac-popup): the transparent span[role=button] covers the
+   pill only; the control wrapper is a shrink-wrapped block so no inline line box changes the
+   band height */
+.ac-close .ac-close-control {
+  display: block;
+  position: relative;
+  width: fit-content;
+  max-width: 100%;
+}
+
+.ac-close .ac-close-trigger {
+  display: block;
+  position: absolute;
+  inset: 17px 0 0;
+  width: 100%;
+  margin: 0;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.ac-close .ac-close-control:has(.ac-close-trigger:focus-visible) strong {
+  outline: 2px solid var(--c-red);
+  outline-offset: 2px;
+}
+
+@media (768px <= width <= 1380px) {
+  .ac-close .ac-close-media {
+    width: 526.625px;
+  }
+}
+
+@media (width <= 1380px) {
+  .ac-close .ac-close-title {
+    width: 628.5px;
+    max-width: 100%;
+  }
+}
+
+@media (width <= 1080px) {
+  .ac-close .ac-close-text {
+    padding: 0;
+  }
+
+  .ac-close .ac-close-title :is(h1, h2, h3, h4, p) {
+    font-size: 25px;
+  }
+}
+
+@media (width <= 767px) {
+  /* --flex-wrap-mobile */
+  .ac-close {
+    flex-wrap: wrap;
+    margin: 0;
+  }
+
+  .ac-close .ac-close-media {
+    width: 100%;
+    padding: 0;
+  }
+
+  .ac-close .ac-close-text {
+    margin: 0;
+    padding: 0;
+  }
+
+  .ac-close .ac-close-title :is(h1, h2, h3, h4, p) {
+    font-size: 22px;
+  }
+
+  .ac-close .ac-close-cta :is(strong, a:any-link) {
+    padding: 10px 30px;
+    font-size: 16px;
+  }
+}

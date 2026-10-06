@@ -1,0 +1,95 @@
+/* ic-hero — values lifted from stardust/prototypes/en-investments-content.css (.ic-hero,
+   .ic-hero__inner / __col / __text / __spacer; 768–1380 40 % spacer, ≤767 column-reverse). The
+   cover photo (shutterstock_1368791051) is decorative; the divider after the hero is canon .bar. */
+
+.ic-hero {
+  display: flex;
+  position: relative;
+  min-height: 85vh;
+  background: url("shutterstock_1368791051-copiar-1-a6d9ce7d.webp") top center / cover no-repeat;
+}
+
+.ic-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: var(--c-black);
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+.ic-hero .ic-hero-inner {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: var(--e-gap);
+}
+
+.ic-hero .ic-hero-col {
+  display: flex;
+  flex: 1 1 100%;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  min-width: 0;
+  padding: 10px;
+}
+
+/* 9e53e12: text-editor widget 86 % wide, align-self flex-start, container padding 10 0 76 */
+.ic-hero .ic-hero-text {
+  width: 86%;
+  max-width: 86%;
+  align-self: flex-start;
+  padding: 10px 0 76px;
+  font-family: var(--font-brand);
+}
+
+.ic-hero .ic-hero-text > * {
+  margin: 0;
+  color: var(--c-white);
+  font-size: 40px;
+  line-height: 48px;
+  font-weight: 400;
+  text-align: start;
+}
+
+/* bbeb03d: empty e-con, 58 % (40 % at ≤1380), no grow / shrink */
+.ic-hero .ic-hero-spacer {
+  flex: 0 0 58%;
+}
+
+@media (width >= 768px) and (width <= 1380px) {
+  .ic-hero .ic-hero-spacer {
+    flex-basis: 40%;
+  }
+
+  .ic-hero .ic-hero-col {
+    padding: 0 0 0 30px;
+  }
+}
+
+@media (width <= 767px) {
+  .ic-hero .ic-hero-inner {
+    flex-direction: column-reverse;
+    justify-content: flex-start;
+  }
+
+  .ic-hero .ic-hero-col {
+    flex: 0 0 auto;
+    padding: 0;
+  }
+
+  .ic-hero .ic-hero-spacer {
+    flex: 0 0 auto;
+  }
+
+  .ic-hero .ic-hero-text {
+    padding: 10px 0 30px;
+  }
+
+  .ic-hero .ic-hero-text > * {
+    font-size: 22px;
+    line-height: 23px;
+  }
+}

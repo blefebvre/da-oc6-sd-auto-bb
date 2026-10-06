@@ -1,0 +1,86 @@
+/* ld-trends — values lifted from stardust/prototypes/en.css (.trends, .trends__box,
+   .trends__title, .trends__text, .trends__cta; ≤1080 50 % box, ≤767 ramp). bg-Exclusive-1 is
+   decorative. */
+
+.ld-trends {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  min-height: 490px;
+  margin: 0 0 30px;
+  padding: 200px 20px 50px 30px;
+  background-image: url("bg-Exclusive-1-947ab603.jpg");
+  background-position: center right;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.ld-trends .ld-trends-box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  width: 40%;
+  padding: 10px;
+}
+
+.ld-trends .ld-trends-box :is(h1, h2, h3, h4) {
+  margin: 0;
+  color: var(--c-white);
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 42px;
+}
+
+.ld-trends .ld-trends-box p {
+  margin: 0;
+  color: var(--c-white);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.5em;
+}
+
+.ld-trends .ld-trends-cta {
+  align-self: flex-start;
+  padding: 0;
+}
+
+.ld-trends .ld-trends-cta p {
+  margin: 0;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+@media (width <= 1080px) {
+  .ld-trends .ld-trends-box {
+    width: 50%;
+  }
+}
+
+@media (width <= 767px) {
+  .ld-trends {
+    min-height: 0;
+    margin: 0;
+    padding: 140px 10px 40px;
+    background-position: center center;
+  }
+
+  .ld-trends .ld-trends-box {
+    gap: 10px;
+    width: 100%;
+  }
+
+  .ld-trends .ld-trends-box :is(h1, h2, h3, h4) {
+    font-size: 22px;
+    line-height: 30px;
+  }
+
+  .ld-trends .ld-trends-box p {
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+  .ld-trends .ld-trends-cta {
+    padding: 10px 0 0;
+  }
+}

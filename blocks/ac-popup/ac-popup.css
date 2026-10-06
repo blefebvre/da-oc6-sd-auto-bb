@@ -1,0 +1,138 @@
+/* ac-popup — values lifted from the click-captured live modal (stardust/dynamics/popups/<slug>.json,
+   1440×900): overlay rgba(0,0,0,.8) fixed flex-centred; content 724 px white, radius 0, shadow
+   rgba(0,0,0,.2) 2px 8px 23px 3px, inner column 604 px (padding 92 / 60) gap 24; label 24/36 w400
+   centred #535353; button #900F15 white 20/27 tracking 3 uppercase radius 40 padding 13 50
+   (post-21872.css ce01545 / 5f7fbbe; ≤767: 18/24 padding 12 44, label 24/28, container 40 16 60
+   gap 40); close 36 px at top 50 right 40 icon #535353; red bar 20 px #900F15 absolute bottom.
+   Closed = display none (no height on the page). EW2: wrapper-descendant selectors. */
+
+.ac-popup {
+  display: none;
+}
+
+.ac-popup.is-open {
+  display: flex;
+  position: fixed;
+  z-index: 10000;
+  inset: 0;
+  align-items: center;
+  justify-content: center;
+  overflow: auto;
+  background-color: rgb(0 0 0 / 80%);
+}
+
+.ac-popup .ac-popup-dialog {
+  position: relative;
+  box-sizing: border-box;
+  width: 724px;
+  max-width: 100%;
+  max-height: 100%;
+  padding: 92px 60px;
+  overflow: auto;
+  background-color: var(--c-white);
+  box-shadow: rgb(0 0 0 / 20%) 2px 8px 23px 3px;
+  color: #535353;
+  font-family: var(--font-brand);
+}
+
+.ac-popup .ac-popup-dialog::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 20px;
+  background-color: #900f15;
+}
+
+.ac-popup .ac-popup-close {
+  display: flex;
+  position: absolute;
+  top: 50px;
+  right: 40px;
+  width: 36px;
+  height: 36px;
+  margin: 0;
+  border: 0;
+  padding: 0;
+  background: none;
+  color: #535353;
+  cursor: pointer;
+}
+
+.ac-popup .ac-popup-close svg {
+  width: 36px;
+  height: 36px;
+}
+
+.ac-popup .ac-popup-body {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+}
+
+.ac-popup .ac-widget {
+  position: relative;
+  max-width: 100%;
+  min-width: 0;
+  text-align: center;
+}
+
+.ac-popup .ac-body :is(h1, h2, h3, h4, p) {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-brand);
+}
+
+.ac-popup .ac-popup-label :is(h1, h2, h3, h4, p) {
+  color: #535353;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 36px;
+}
+
+.ac-popup .ac-popup-link a:any-link {
+  display: inline-block;
+  max-width: 100%;
+  margin: 0;
+  border: 0;
+  border-radius: 40px;
+  padding: 13px 50px;
+  background-color: #900f15;
+  color: var(--c-white);
+  font-family: var(--font-brand);
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 27px;
+  letter-spacing: 3px;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: all 0.3s;
+}
+
+.ac-popup .ac-popup-link a:any-link:hover,
+.ac-popup .ac-popup-link a:any-link:focus {
+  background-color: rgb(144 15 21 / 90%);
+}
+
+@media (width <= 767px) {
+  .ac-popup .ac-popup-dialog {
+    padding: 40px 16px 60px;
+  }
+
+  .ac-popup .ac-popup-body {
+    gap: 40px;
+  }
+
+  .ac-popup .ac-popup-label :is(h1, h2, h3, h4, p) {
+    line-height: 28px;
+  }
+
+  .ac-popup .ac-popup-link a:any-link {
+    padding: 12px 44px;
+    font-size: 18px;
+    line-height: 24px;
+  }
+}

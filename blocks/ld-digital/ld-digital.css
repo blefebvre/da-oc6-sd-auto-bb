@@ -1,0 +1,23 @@
+/* ld-digital — values lifted from stardust/prototypes/en.css (.digital: hidden on every Elementor
+   device on live, kept as display: none; the ≤767 item type ramp is lifted as-is). */
+
+.ld-digital {
+  display: none;
+}
+
+@media (width <= 767px) {
+  .ld-digital .ld-digital-item > p:first-child {
+    color: var(--c-white);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 21px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+  }
+
+  .ld-digital .ld-digital-item > p:nth-child(2) {
+    color: var(--c-white);
+    font-size: 14px;
+    line-height: 23px;
+  }
+}

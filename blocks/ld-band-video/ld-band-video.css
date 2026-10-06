@@ -1,0 +1,85 @@
+/* ld-band-video — values lifted from stardust/prototypes/en.css (.band-video, .band-video__video,
+   .band-video::before, .band-video .e-inner, .band-video__text; ≤1080 and ≤767 ramps). The line
+   art (linhas-elemento-1.png) is decorative, in this folder. */
+
+.ld-band-video {
+  display: flex;
+  position: relative;
+  min-height: 822px;
+  margin-top: -1px;
+  padding: 0 10px;
+  overflow: hidden;
+  background-color: var(--c-black);
+}
+
+.ld-band-video .ld-band-video-video {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.ld-band-video .ld-band-video-video iframe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: auto;
+  min-width: 100%;
+  height: auto;
+  min-height: 100%;
+  transform: translate(-50%, -50%);
+  border: 0;
+  aspect-ratio: 16 / 9;
+}
+
+.ld-band-video::before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background-image: url("linhas-elemento-1.png");
+  background-position: 100% 120%;
+  background-repeat: no-repeat;
+}
+
+.ld-band-video .e-inner {
+  display: flex;
+  position: relative;
+  z-index: 2;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px 0;
+}
+
+.ld-band-video .e-inner :is(p, h1, h2, h3) {
+  margin: 0;
+  color: var(--c-white);
+  font-size: 50px;
+  font-weight: 400;
+  line-height: 57px;
+  text-align: center;
+}
+
+@media (width <= 1080px) {
+  .ld-band-video::before {
+    background-position: 100% 100%;
+  }
+
+  .ld-band-video .e-inner :is(p, h1, h2, h3) {
+    font-size: 35px;
+  }
+}
+
+@media (width <= 767px) {
+  .ld-band-video {
+    min-height: 400px;
+    margin-top: 35px;
+    padding: 0;
+  }
+
+  .ld-band-video .e-inner :is(p, h1, h2, h3) {
+    font-size: 22px;
+    line-height: 25px;
+  }
+}

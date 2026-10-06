@@ -1,0 +1,231 @@
+/* ar-body — values lifted from stardust/prototypes/en-reits.css (.ar-body, .ar-body__inner,
+   .ar-meta, .favorite-*, .ar-content). The section (.ar-body-container) is the live .ar-body
+   e-con: margin 20/30 + padding 0 10px outside, padding 10px 0 + gap 20 inside — expressed as
+   section padding so no margin collapses through <main>. Its children (the meta block wrapper,
+   the default-content prose, the table block wrapper) share the 1150px shell at ≥768. */
+
+main .section.ar-body-container {
+  /* the live <p>&nbsp;</p> spacer line box (16px × 1.65) between every two blocks of copy;
+     the pipeline drops whitespace-only paragraphs, so the rhythm is modelled as margins */
+  --ar-p-gap: 26.4px;
+  --ar-h3-size: 26px;
+
+  padding: 30px 10px calc(40px - var(--ar-p-gap));
+  color: #535353;
+  font-family: var(--font-brand);
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+/* `ar-body flush` (encoder-detected: live post-content without spacer paragraphs — the three
+   investments-at-bradesco-bank pages): live p margin 0, copy runs flush */
+main .section.ar-body-container.ar-content-flush {
+  --ar-p-gap: 0px;
+}
+
+main .section.ar-body-container > div {
+  width: var(--container-width);
+  max-width: var(--container-max);
+  margin: 0 auto;
+}
+
+@media (width >= 768px) {
+  main .section.ar-body-container > div {
+    max-width: var(--shell-max);
+  }
+}
+
+main .section.ar-body-container > .ar-body-wrapper {
+  margin-bottom: 20px;
+}
+
+/* ---- meta row (0fa6826): date | favorite ---- */
+.ar-body .ar-meta {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(1, 1fr);
+  grid-auto-flow: row;
+  place-items: center stretch;
+  gap: 20px;
+}
+
+.ar-body .ar-meta-date,
+.ar-body .ar-meta-fav {
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+.ar-body .ar-meta-date p {
+  margin: 0;
+}
+
+.ar-body .favorite-container {
+  display: inline-block;
+  float: right;
+  margin: 0;
+}
+
+.ar-body .favorite-btn {
+  width: 24px;
+  height: 28px;
+  border: none;
+  padding: 5px 0 0;
+  background: none;
+  color: #000;
+  cursor: pointer;
+  transition: all 0.3s linear;
+}
+
+.ar-body .favorite-btn:hover {
+  transform: scale(1.1);
+}
+
+.ar-body .favorite-btn svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  fill: #666;
+}
+
+.ar-body .favorite-btn:hover svg {
+  fill: #cc092f;
+}
+
+.ar-body .favorite-icon {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ar-body .favorite-btn,
+  .ar-body .favorite-btn.pulse {
+    animation: none;
+    transition: none;
+  }
+}
+
+/* ---- post content (74302a0): Blocksy type ramp on the section's default content ---- */
+main .section.ar-body-container .default-content-wrapper :is(h2, h3, h4) {
+  margin: 0 0 calc(0.3em + 10px);
+  color: #535353;
+}
+
+main .section.ar-body-container .default-content-wrapper h2 {
+  font-size: 32px;
+  line-height: 37px;
+  font-weight: 400;
+}
+
+main .section.ar-body-container .default-content-wrapper h3 {
+  font-size: var(--ar-h3-size);
+  line-height: 32px;
+  font-weight: 400;
+}
+
+main .section.ar-body-container .default-content-wrapper h4 {
+  font-size: 25px;
+  line-height: 1.5;
+  font-weight: 700;
+}
+
+main .section.ar-body-container .default-content-wrapper p {
+  margin: 0 0 var(--ar-p-gap);
+}
+
+/* live: ul 1.5em; the empty <h3> wpautop leaves after every list collapses its margin into it.
+   Residual: a list followed by a blank paragraph (one on /en/reits) reads 26.4px shorter here. */
+main .section.ar-body-container .default-content-wrapper ul {
+  margin: 0 0 1.5em;
+  padding: 0 0 0 40px;
+  list-style: disc;
+}
+
+main .section.ar-body-container .default-content-wrapper li {
+  display: list-item;
+}
+
+main .section.ar-body-container .default-content-wrapper em {
+  font-style: italic;
+}
+
+main .section.ar-body-container .default-content-wrapper strong {
+  font-weight: 700;
+}
+
+/* the data table block sits between two copy runs: table → spacer → heading */
+main .section.ar-body-container > .table-wrapper {
+  margin-bottom: var(--ar-p-gap);
+}
+
+@media (width <= 999.98px) {
+  main .section.ar-body-container .default-content-wrapper h2 {
+    font-size: 35px;
+  }
+}
+
+@media (width <= 689.98px) {
+  main .section.ar-body-container {
+    --ar-h3-size: 22px;
+  }
+
+  main .section.ar-body-container .default-content-wrapper h2 {
+    font-size: 22px;
+    line-height: 29px;
+  }
+
+  main .section.ar-body-container .default-content-wrapper h3 {
+    line-height: 29px;
+  }
+}
+
+/* ---- closing disclaimer section (encoder-emitted, style `ar-disclaimer`): the live divider widget
+   (f544130) is a 1px solid #000 line with 15px block padding straight after the post copy, and the
+   text-editor after it (59294c6) is 14px with flush paragraphs (p margin 0), line-height 1.65.
+   The ar-body section ends 40px below its last paragraph (p gap + padding), live has 15px: the
+   negative margin restores the live 15px above the rule ---- */
+main .section.ar-disclaimer {
+  margin-top: -25px;
+  padding: 0 10px 40px;
+  color: #535353;
+  font-family: var(--font-brand);
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+main .section.ar-disclaimer > div {
+  width: var(--container-width);
+  max-width: var(--container-max);
+  margin: 0 auto;
+}
+
+@media (width >= 768px) {
+  main .section.ar-disclaimer > div {
+    max-width: var(--shell-max);
+  }
+}
+
+/* measured at 360: live rule box 1894–1925 (15 + 1 + 15), copy starts at 1945 — the e-con's
+   20px widget gap below the divider; EDS copy at 1913 before this padding was lifted */
+main .section.ar-disclaimer > .default-content-wrapper {
+  padding-top: 35px;
+  border-top: 1px solid #000;
+}
+
+main .section.ar-disclaimer > .default-content-wrapper p {
+  margin: 0;
+}
+
+/* ---- editorial body images (sibling variant body-image): the live <img> is 1024/1123
+   wide inside the 1150 shell, height auto ---- */
+main .section.ar-body-container .default-content-wrapper picture,
+main .section.ar-body-container .default-content-wrapper img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+main .section.ar-body-container .default-content-wrapper p:has(> picture) {
+  margin-bottom: var(--ar-p-gap);
+}

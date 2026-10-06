@@ -1,0 +1,159 @@
+/* pb-split — values lifted from stardust/prototypes/en-personal-bank.css (.pb-split*, .pb-iconlist*,
+   .pb-btn-end). Half photos are decorative (CSS, files in this folder); the list icon is the live
+   30×4 red gradient rule (inline SVG). */
+
+.pb-split {
+  display: flex;
+  flex-direction: row;
+  gap: 0;
+  padding: 0;
+}
+
+.pb-split .pb-split-half {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 50%;
+  min-height: 640px;
+  padding: 40px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.pb-split .pb-split-half-mm {
+  margin-right: 10px;
+  background-image: url("section1mansmile-219eba8a.webp");
+}
+
+.pb-split .pb-split-half-cd {
+  margin-left: 10px;
+  background-image: url("section1omanegirlsmile-89faf0ea.webp");
+}
+
+.pb-split .pb-split-title {
+  margin: 0;
+  padding: 0 0 16px;
+  font-size: 32px;
+  line-height: 1.5em;
+}
+
+.pb-split .pb-split-title-cd {
+  padding: 0;
+  font-size: 26px;
+}
+
+.pb-split .pb-split-text {
+  width: 350px;
+  max-width: 350px;
+  margin: 0;
+  font-size: 22px;
+  line-height: 1.3em;
+}
+
+.pb-split .pb-split-iconlist {
+  width: 280px;
+  max-width: 280px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pb-split .pb-split-iconlist li {
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+  margin: 0;
+  padding: 0;
+}
+
+.pb-split .pb-split-iconlist li:not(:last-child) {
+  padding-block-end: 4px;
+}
+
+.pb-split .pb-split-iconlist li:not(:first-child) {
+  margin-block-start: 4px;
+}
+
+.pb-split .pb-split-iconlist-icon {
+  display: flex;
+  position: relative;
+  align-self: flex-start;
+  inset-block-start: 4px;
+  width: 30px;
+  height: 30px;
+  margin: 0 7.5px 0 0;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='4' viewBox='0 0 30 4'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='2' x2='30' y2='2' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%23CC092F'/%3E%3Cstop offset='1' stop-color='%23CC092F' stop-opacity='0'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='30' height='4' fill='url(%23g)'/%3E%3C/svg%3E") center / 30px 4px no-repeat;
+}
+
+.pb-split .pb-split-iconlist-text {
+  align-self: center;
+  padding-inline-start: 5px;
+  font-size: 22px;
+  line-height: 1.65;
+}
+
+.pb-split .pb-btn-end {
+  align-self: flex-start;
+  margin: 0;
+}
+
+@media (width <= 1080px) {
+  .pb-split {
+    flex-direction: column;
+  }
+
+  .pb-split .pb-split-half {
+    width: 100%;
+    min-height: 475px;
+    margin: 0;
+  }
+
+  .pb-split .pb-split-half-mm {
+    justify-content: center;
+  }
+
+  .pb-split .pb-split-half-cd {
+    margin-top: 19px;
+  }
+
+  .pb-split .pb-split-iconlist {
+    width: 380px;
+    max-width: 380px;
+  }
+
+  .pb-split .pb-split-iconlist-text,
+  .pb-split .pb-split-text {
+    font-size: 18px;
+  }
+}
+
+@media (width <= 767px) {
+  .pb-split .pb-split-half-mm {
+    min-height: 337px;
+    padding: 0 0 0 20px;
+  }
+
+  .pb-split .pb-split-half-cd {
+    justify-content: center;
+    min-height: 337px;
+    margin-top: 15px;
+    padding: 20px;
+  }
+
+  .pb-split .pb-split-iconlist {
+    width: 237px;
+    max-width: 237px;
+  }
+
+  .pb-split .pb-split-iconlist-text {
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+  .pb-split .pb-split-text {
+    width: 179px;
+    max-width: 179px;
+    font-size: 16px;
+  }
+}

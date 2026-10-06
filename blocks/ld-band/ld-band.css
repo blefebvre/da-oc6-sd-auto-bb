@@ -1,0 +1,45 @@
+/* ld-band — generic sibling band: stacked copy in the Elementor boxed inner (canon .e-inner);
+   type from the foundation body/heading rules, n-cell rows as a simple bordered table. */
+
+.ld-band {
+  display: flex;
+  flex-direction: column;
+  padding: 40px 10px;
+}
+
+.ld-band .ld-band-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.ld-band .ld-band-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ld-band .ld-band-copy :is(h1, h2, h3, h4, h5, h6, p, ul, ol) {
+  margin: 0;
+}
+
+.ld-band .ld-band-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.ld-band .ld-band-table td {
+  border: 1px solid var(--c-divider);
+  padding: 10px;
+  vertical-align: top;
+}
+
+.ld-band .ld-band-table td :is(h1, h2, h3, h4, p, ul, ol) {
+  margin: 0;
+}
+
+@media (width <= 767px) {
+  .ld-band {
+    padding: 20px 0;
+  }
+}

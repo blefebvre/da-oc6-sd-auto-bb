@@ -1,0 +1,64 @@
+/* ac-intro — values lifted from stardust/prototypes/en-visa-gold-activation.css (.ac-intro*;
+   Blocksy h2 32/37 → 35 ≤999.98 → 22/29 ≤689.98 measured at 360; padding 75/72 → 50 at
+   ≤767).
+   EW2: authored texts are styled by wrapper-DESCENDANT selectors (the editor swap nests them). */
+
+.ac-intro {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  width: 100%;
+  max-width: 100%;
+  padding: 75px 0 72px;
+}
+
+.ac-intro .ac-intro-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* text-editor 55cb8fe centred (align-self center) */
+.ac-intro .ac-intro-widget {
+  position: relative;
+  align-self: center;
+  max-width: 100%;
+  min-width: 0;
+  text-align: center;
+}
+
+.ac-intro .ac-body {
+  font-family: var(--font-brand);
+}
+
+.ac-intro .ac-body :is(h1, h2, h3, h4, p) {
+  margin: 0;
+  padding: 0;
+  color: var(--c-text);
+  font-family: var(--font-brand);
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 37px;
+  text-align: center;
+}
+
+/* Blocksy h2 ≤999.98 */
+@media (width <= 999.98px) {
+  .ac-intro .ac-body :is(h1, h2, h3, h4, p) {
+    font-size: 35px;
+  }
+}
+
+@media (width <= 767px) {
+  .ac-intro {
+    padding: 50px;
+  }
+}
+
+/* measured 22/29 at 360 */
+@media (width <= 689.98px) {
+  .ac-intro .ac-body :is(h1, h2, h3, h4, p) {
+    font-size: 22px;
+    line-height: 29px;
+  }
+}

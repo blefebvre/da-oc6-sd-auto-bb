@@ -31,3 +31,75 @@
     order: unset;
   }
 }
+
+/* ---- variant `steps` (article html widget .compounding-steps): number bubble | text ---- */
+.columns.steps > div {
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.columns.steps > div:last-child {
+  margin-bottom: 0;
+}
+
+.columns.steps > div > div:first-child {
+  display: flex;
+  flex: 0 0 27px;
+  align-items: center;
+  justify-content: center;
+  width: 27px;
+  height: 27px;
+  border-radius: 50%;
+  background: #9e0b16;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.columns.steps > div > div p {
+  margin: 0;
+  line-height: 1.45;
+}
+/* stylelint-disable no-descending-specificity -- variant blocks are independent */
+
+/* ---- variant `options` (article html widget .investment-options): 5 red tiles ---- */
+.columns.options > div {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(130px, 1fr));
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.columns.options > div > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 125px;
+  padding: 18px;
+  border-radius: 11px;
+  background: #a20d18;
+  box-shadow: 0 3px 3px rgb(0 0 0 / 22%);
+  color: #fff;
+  text-align: center;
+  line-height: 1.45;
+}
+
+.columns.options > div > div p {
+  margin: 0;
+}
+
+@media (width <= 900px) {
+  .columns.options > div {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+}
+
+@media (width <= 520px) {
+  .columns.options > div {
+    grid-template-columns: 1fr;
+  }
+}

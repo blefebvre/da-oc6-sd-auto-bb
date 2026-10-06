@@ -1,0 +1,112 @@
+/* ar-hero — values lifted from stardust/prototypes/en-reits.css (.ar-hero, .ar-hero__inner,
+   .ar-hero__title, .ar-divider). The authored image is the background layer (the pipeline wraps
+   it in <p><picture>); the overlay is a ::before over it; the divider is decorative CSS. */
+
+.ar-hero {
+  display: block;
+}
+
+.ar-hero .ar-hero-band {
+  display: flex;
+  position: relative;
+  isolation: isolate;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background: #000;
+}
+
+.ar-hero .ar-hero-media {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  margin: 0;
+  line-height: 0;
+}
+
+.ar-hero .ar-hero-media picture,
+.ar-hero .ar-hero-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.ar-hero .ar-hero-band::before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background-color: #000;
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.ar-hero .ar-hero-inner {
+  display: flex;
+  position: relative;
+  z-index: 2;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 250px 0 80px;
+}
+
+.ar-hero .ar-hero-title {
+  max-width: 1000px;
+  text-align: center;
+}
+
+.ar-hero .ar-hero-title :is(h1, h2, h3) {
+  margin: 0;
+  color: #fff;
+  font-size: 36px;
+  line-height: 50px;
+  font-weight: 400;
+  text-align: center;
+}
+
+/* gradient line (df751d4): 19px, overlaps the band by 1px on desktop */
+.ar-hero .ar-divider {
+  display: flex;
+  width: 100%;
+  min-height: 19px;
+  margin-top: -1px;
+  background: url("./linha-degrade-desktop-1.jpg") center center / cover no-repeat;
+}
+
+@media (width <= 1080px) {
+  .ar-hero .ar-hero-band {
+    min-height: 30vh;
+  }
+
+  .ar-hero .ar-hero-inner {
+    padding: 200px 0 80px;
+  }
+
+  .ar-hero .ar-hero-title :is(h1, h2, h3) {
+    font-size: 30px;
+    line-height: 40px;
+  }
+}
+
+@media (width <= 767px) {
+  .ar-hero .ar-hero-inner {
+    flex-direction: column-reverse;
+    justify-content: flex-start;
+    padding: 180px 0 60px;
+  }
+
+  .ar-hero .ar-hero-title :is(h1, h2, h3) {
+    font-size: 26px;
+    line-height: 35px;
+  }
+
+  .ar-hero .ar-divider {
+    margin-top: 0;
+    background-image: url("/styles/img/mob-linha-degrade-1.jpg");
+  }
+}

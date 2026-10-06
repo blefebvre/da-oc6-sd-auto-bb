@@ -1,0 +1,60 @@
+/* ic-band — generic listing band. `hl-title` values lifted from
+   stardust/prototypes/en-investments-content.css (.ic-hl-title, .ic-hl-title__text; ≤1080 40 px
+   padding / 26 px, ≤767 22/26). The copy is widget-level text → brand font (live
+   .elementor-widget-container { font-family: BradescoSans }). */
+
+.ic-band {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.ic-band .ic-band-text {
+  width: 100%;
+  max-width: 100%;
+  font-family: var(--font-brand);
+}
+
+.ic-band .ic-band-text > :first-child {
+  margin-top: 0;
+}
+
+.ic-band .ic-band-text > :last-child {
+  margin-bottom: 0;
+}
+
+/* ---- Highlights title (65b7b51): min-height 150, white; c5e1a42 28/30 centred, pad 70 ---- */
+.ic-band.hl-title {
+  min-height: 150px;
+  background-color: var(--c-white);
+}
+
+.ic-band.hl-title .ic-band-text {
+  padding: 70px 0;
+}
+
+.ic-band.hl-title .ic-band-text > * {
+  margin: 0;
+  color: var(--c-text);
+  font-size: 28px;
+  line-height: 30px;
+  font-weight: 400;
+  text-align: center;
+}
+
+@media (width <= 1080px) {
+  .ic-band.hl-title .ic-band-text {
+    padding: 40px 0;
+  }
+
+  .ic-band.hl-title .ic-band-text > * {
+    font-size: 26px;
+  }
+}
+
+@media (width <= 767px) {
+  .ic-band.hl-title .ic-band-text > * {
+    font-size: 22px;
+    line-height: 26px;
+  }
+}

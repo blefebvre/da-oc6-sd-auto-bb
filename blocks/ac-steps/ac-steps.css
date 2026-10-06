@@ -1,0 +1,368 @@
+/* ac-steps — values lifted from stardust/prototypes/en-visa-gold-activation.css (.ac-steps,
+   .ac-step*, per-step --num-w / --title-w = the live page's resolved Elementor widget widths;
+   breakpoints 1380 / 1080 / 767 as on live). Grey / deep red / white are the foundation custom
+   properties. The LOGIN pill (page rules f5247e3 / 1841852: 18px / 400 / 1.3 tracking / radius 41 /
+   12px 25px, deep red on white) overrides the kit pill by specificity.
+   EW2: authored texts are styled by wrapper-DESCENDANT selectors (the editor swap nests them). */
+
+/* step row (9b0cd4c …): e-con-full, --width 1300, padding 10, row, gap 0 */
+.ac-steps {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  gap: 0;
+  width: 1300px;
+  max-width: min(100%, 1300px);
+  margin: 0 auto;
+  padding: 10px;
+}
+
+.ac-steps .ac-widget {
+  position: relative;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.ac-steps .ac-body {
+  font-family: var(--font-brand);
+}
+
+/* .elementor-heading-title: line-height 1, no margins */
+.ac-steps .ac-body :is(h1, h2, h3, h4, p) {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-brand);
+  line-height: 1;
+}
+
+.ac-steps .ac-widget-image {
+  text-align: center;
+}
+
+.ac-steps .ac-widget-image img {
+  display: inline-block;
+  max-width: 100%;
+  height: auto;
+  border: 0;
+  vertical-align: middle;
+}
+
+/* cards (8bab3cb, 4726b01 …): column, #F6F6F6, width 100% / flex 0 1 auto / min-width 0, 5px
+   outer margins */
+.ac-steps .ac-step {
+  display: flex;
+  position: relative;
+  flex: 0 1 auto;
+  flex-direction: column;
+  gap: 0;
+  width: 100%;
+  min-width: 0;
+  padding: 0;
+  background-color: var(--c-grey);
+}
+
+.ac-steps .ac-step-first {
+  margin: 0 5px 0 0;
+}
+
+.ac-steps .ac-step-second {
+  margin: 0 0 0 5px;
+}
+
+/* red head (5b060bf …): row, #900F15, padding 10, gap 20, align center, margin-right 5 */
+.ac-steps .ac-step-head {
+  display: flex;
+  position: relative;
+  flex: 0 1 auto;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  min-width: 0;
+  margin: 0 5px 0 0;
+  padding: 10px;
+  background-color: var(--c-red-deep);
+}
+
+/* number heading widget (0723c18 …): flex 0 0, container margin-left 15, h2 100px / white */
+.ac-steps .ac-step-num {
+  flex: 0 0 auto;
+  width: var(--num-w, auto);
+  max-width: var(--num-w, 100%);
+}
+
+.ac-steps .ac-step-num .ac-body {
+  margin: 0 0 0 15px;
+}
+
+.ac-steps .ac-step-num :is(h1, h2, h3, h4, p) {
+  color: var(--c-white);
+  font-size: 100px;
+}
+
+/* title wrap (5cdd8d0, step 1): row, width 100% shrink, align-self center, gap 20 */
+.ac-steps .ac-step-body {
+  display: flex;
+  position: relative;
+  flex: 0 1 auto;
+  flex-direction: row;
+  align-self: center;
+  gap: 20px;
+  width: 100%;
+  min-width: 0;
+  padding: 0;
+}
+
+/* title heading widget (91d23c8 …): fixed lifted width, flex 0 0; h2 26/28 white */
+.ac-steps .ac-step-title {
+  flex: 0 0 auto;
+  width: var(--title-w);
+  max-width: var(--title-w);
+}
+
+.ac-steps .ac-step-title :is(h1, h2, h3, h4, p) {
+  color: var(--c-white);
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 28px;
+}
+
+.ac-steps .ac-step-cta .ac-body {
+  padding: 0;
+}
+
+.ac-steps .ac-step-cta p {
+  margin: 0;
+}
+
+/* .elementor-button light (f5247e3): white pill, deep-red text */
+.ac-steps .ac-step-cta a:any-link {
+  display: inline-block;
+  max-width: 100%;
+  margin: 0;
+  border: 0;
+  border-radius: 41px;
+  padding: 12px 25px;
+  background-color: var(--c-white);
+  color: var(--c-red-deep);
+  font-family: var(--font-brand);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 1.3px;
+  text-align: center;
+  text-decoration: none;
+  text-transform: none;
+  transition: all 0.3s;
+}
+
+.ac-steps .ac-step-1,
+.ac-steps .ac-step-2,
+.ac-steps .ac-step-3,
+.ac-steps .ac-step-5,
+.ac-steps .ac-step-6,
+.ac-steps .ac-step-7 {
+  --title-w: 347.292px;
+}
+
+.ac-steps .ac-step-4 {
+  --title-w: 435.292px;
+}
+
+/* media box (f8ed3ee …): column, padding 30, #F6F6F6, gap 20; img at its lifted px width */
+.ac-steps .ac-step-media {
+  display: flex;
+  position: relative;
+  flex: 0 1 auto;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  min-width: 0;
+  padding: 30px;
+  background-color: var(--c-grey);
+}
+
+/* 98cc6d9 */
+.ac-steps .ac-step-media-1 img {
+  width: 198px;
+  height: 335px;
+}
+
+/* 5130bf6, 26a0089 */
+.ac-steps .ac-step-media-2 img,
+.ac-steps .ac-step-media-3 img {
+  width: 192px;
+}
+
+.ac-steps .ac-step-media-4 img,
+.ac-steps .ac-step-media-5 img,
+.ac-steps .ac-step-media-6 img,
+.ac-steps .ac-step-media-7 img {
+  width: 193px;
+}
+
+/* e79d0c3 */
+.ac-steps .ac-step-media-6 {
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  background-color: transparent;
+}
+
+.ac-steps .ac-step-media-6 .ac-widget {
+  width: 100%;
+}
+
+/* step 7 (b403cd7): red block d1b5968 (row, centred, padding 10, no margins) | image 46c198b */
+.ac-steps .ac-step-head-final {
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 10px;
+}
+
+.ac-steps .ac-step-media-7 {
+  padding: 10px;
+}
+
+@media (width <= 1380px) {
+  .ac-steps .ac-step-1 {
+    --num-w: 85.975px;
+    --title-w: 268px;
+  }
+
+  .ac-steps .ac-step-2,
+  .ac-steps .ac-step-4,
+  .ac-steps .ac-step-5,
+  .ac-steps .ac-step-7 {
+    --num-w: 102px;
+    --title-w: 284.438px;
+  }
+
+  .ac-steps .ac-step-3 {
+    --num-w: 113px;
+    --title-w: 284.438px;
+  }
+
+  .ac-steps .ac-step-6 {
+    --num-w: 107px;
+    --title-w: 356px;
+  }
+}
+
+@media (width <= 1080px) {
+  .ac-steps {
+    flex-direction: column;
+  }
+
+  .ac-steps .ac-step-body {
+    flex-direction: column;
+  }
+
+  .ac-steps .ac-step-head-final {
+    justify-content: flex-start;
+  }
+
+  .ac-steps .ac-step-1 {
+    --title-w: 506px;
+  }
+
+  .ac-steps .ac-step-2 {
+    --title-w: 470px;
+  }
+
+  .ac-steps .ac-step-3 {
+    --title-w: 418px;
+  }
+
+  .ac-steps .ac-step-4 {
+    --title-w: 356px;
+  }
+
+  .ac-steps .ac-step-5 {
+    --title-w: 449px;
+  }
+
+  .ac-steps .ac-step-6 {
+    --title-w: 490px;
+  }
+
+  .ac-steps .ac-step-7 {
+    --title-w: 403px;
+  }
+}
+
+@media (width <= 767px) {
+  .ac-steps {
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  .ac-steps .ac-step,
+  .ac-steps .ac-step-first,
+  .ac-steps .ac-step-second {
+    margin: 0;
+  }
+
+  .ac-steps .ac-step-head {
+    margin: 0;
+    padding: 10px;
+  }
+
+  /* 5b060bf ≤767 */
+  .ac-steps .ac-step-1 .ac-step-head {
+    gap: 5px;
+  }
+
+  .ac-steps .ac-step-num :is(h1, h2, h3, h4, p) {
+    font-size: 64px;
+  }
+
+  /* 5cdd8d0 ≤767 */
+  .ac-steps .ac-step-body {
+    gap: 0;
+    width: 75%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .ac-steps .ac-step-title :is(h1, h2, h3, h4, p) {
+    font-size: 18px;
+  }
+
+  .ac-steps .ac-step-cta a:any-link {
+    padding: 10px 15px;
+    font-size: 16px;
+  }
+
+  .ac-steps .ac-step-1 {
+    --num-w: 61.958px;
+    --title-w: 202.431px;
+  }
+
+  .ac-steps .ac-step-2,
+  .ac-steps .ac-step-3 {
+    --num-w: 70.944px;
+    --title-w: 202.431px;
+  }
+
+  .ac-steps .ac-step-4 {
+    --num-w: 70.944px;
+    --title-w: 207px;
+  }
+
+  .ac-steps .ac-step-5 {
+    --num-w: 70.944px;
+    --title-w: 201px;
+  }
+
+  .ac-steps .ac-step-6 {
+    --num-w: 70.944px;
+    --title-w: 181px;
+  }
+
+  .ac-steps .ac-step-7 {
+    --num-w: 70.944px;
+    --title-w: 196px;
+  }
+}

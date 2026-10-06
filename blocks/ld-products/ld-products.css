@@ -1,0 +1,196 @@
+/* ld-products — values lifted from stardust/prototypes/en.css (.products, .products--first/
+   second, .product*, .product__eyebrow/title/desc/logo/zelle-text/note; ≤1080 stacked, ≤767
+   ramp).
+   Photos are decorative, keyed by variant + card position: first 1 investments, first 2 real
+   estate, second 1 credit cards, second 2 zelle. */
+
+.ld-products {
+  display: flex;
+  flex-direction: row;
+  gap: var(--e-gap);
+}
+
+.ld-products.first {
+  padding-bottom: 20px;
+}
+
+.ld-products .ld-product {
+  display: flex;
+  position: relative;
+  flex: 0 1 50%;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 9px;
+  min-height: 480px;
+  padding: 70px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.ld-products .ld-product:first-child {
+  flex: 0 0 50%;
+}
+
+.ld-products.first .ld-product:nth-child(1) {
+  background-image: url("desk-thumb-home-investments-2-6d099983.jpg");
+}
+
+.ld-products.first .ld-product:nth-child(2) {
+  background-image: url("desk-thumb-produto-3-17ec932b.jpg");
+  background-position: center right;
+}
+
+.ld-products.second .ld-product:nth-child(1) {
+  background-image: url("thumb-bradesco-credit-home-1-91ca4915.webp");
+}
+
+.ld-products.second .ld-product:nth-child(2) {
+  background-image: url("home-zelle-2-4ce78f69.webp");
+  background-position: center right;
+}
+
+.ld-products .ld-product-body {
+  display: flex;
+  flex-direction: column;
+  min-height: 160px;
+  padding: 0;
+}
+
+.ld-products .ld-product-note {
+  margin: 0;
+  color: var(--c-text);
+  font-size: 11px;
+  line-height: 1.65;
+}
+
+/* live note = inline span inside the p (unit-geometry measures the inline box: 533×32 at 1440) */
+.ld-products .ld-product-note p {
+  display: inline;
+  margin: 0;
+}
+
+.ld-products .ld-product-note p + p::before {
+  content: "\A";
+  white-space: pre;
+}
+
+/* eyebrow = the paragraph right before the title */
+.ld-products .ld-product-eyebrow p {
+  margin: 0;
+  color: var(--c-white);
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 35px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+}
+
+.ld-products .ld-product-title :is(h2, h3, h4) {
+  margin: 0;
+  color: var(--c-white);
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 55px;
+}
+
+/* no eyebrow (title first) = the live regular-weight title (Credit Cards) */
+.ld-products .ld-product-title:first-child :is(h2, h3, h4) {
+  font-weight: 400;
+  line-height: 1.65;
+}
+
+.ld-products .ld-product-desc p {
+  width: 65%;
+  margin: 0;
+  color: var(--c-white);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 23px;
+}
+
+.ld-products .ld-product-logo p {
+  margin: 0;
+}
+
+.ld-products .ld-product-logo img {
+  display: block;
+  width: 139px;
+  height: 64px;
+}
+
+.ld-products .ld-product > .button-wrapper {
+  align-self: flex-start;
+  margin: 0;
+}
+
+@media (width >= 1081px) {
+  .ld-products.second .ld-product {
+    min-height: 500px;
+  }
+}
+
+@media (width <= 1080px) {
+  .ld-products {
+    flex-direction: column;
+  }
+
+  .ld-products .ld-product {
+    flex: 0 0 auto;
+    width: 100%;
+    min-height: 487px;
+    padding: 32px;
+  }
+
+  .ld-products .ld-product-title :is(h2, h3, h4) {
+    font-size: 35px;
+  }
+}
+
+@media (width <= 767px) {
+  .ld-products.first {
+    padding-bottom: 0;
+  }
+
+  .ld-products .ld-product {
+    gap: 5px;
+    min-height: 340px;
+    padding: 140px 20px 20px;
+  }
+
+  .ld-products .ld-product-body {
+    width: var(--container-width);
+    min-height: 0;
+    margin: 0 auto;
+    padding: 0 0 10px;
+  }
+
+  .ld-products .ld-product-body:has(> .ld-product-logo) {
+    padding: 0;
+  }
+
+  .ld-products .ld-product-eyebrow p {
+    font-size: 16px;
+    line-height: 21px;
+  }
+
+  .ld-products .ld-product-title :is(h2, h3, h4),
+  .ld-products .ld-product-title:first-child :is(h2, h3, h4) {
+    font-size: 22px;
+    line-height: 27px;
+  }
+
+  .ld-products .ld-product-desc p {
+    width: 100%;
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .ld-products .ld-product-logo + .ld-product-desc p {
+    padding-bottom: 10px;
+  }
+
+  .ld-products .ld-product-note {
+    padding-top: 0;
+  }
+}

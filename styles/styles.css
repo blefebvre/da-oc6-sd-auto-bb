@@ -10,82 +10,107 @@
  * governing permissions and limitations under the License.
  */
 
+/* stylelint-disable no-descending-specificity */
+
+/* bradescobank foundation — tokens lifted from stardust/prototypes/canon.css (the gated canon:
+   Blocksy global.css, Elementor kit post-8, theme customizer; measured live at 1440 / 360).
+   Canon back-port applied here: --header-top-h 50px -> 51px (live FDIC row = 50px + 1px border). */
 :root {
-  /* colors */
-  --background-color: white;
-  --light-color: #f8f8f8;
-  --dark-color: #505050;
-  --text-color: #131313;
-  --link-color: #3b63fb;
-  --link-hover-color: #1d3ecf;
-
   /* fonts */
-  --body-font-family: roboto, roboto-fallback, sans-serif;
-  --heading-font-family: roboto-condensed, roboto-condensed-fallback, sans-serif;
+  --font-brand: bradescosans, bradescosans-fallback, sans-serif;
+  --font-system: -apple-system, blinkmacsystemfont, "Segoe UI", roboto, helvetica, arial,
+    sans-serif;
 
-  /* body sizes */
-  --body-font-size-m: 22px;
-  --body-font-size-s: 19px;
-  --body-font-size-xs: 17px;
+  /* colors */
+  --c-red: #cc092f;
+  --c-red-deep: #900f15;
+  --c-button: #ba0a29;
+  --c-button-hover: #920820;
+  --c-blue: #37398c;
+  --c-text: #535353;
+  --c-grey: #f6f6f6;
+  --c-divider: #8e8e8e;
+  --c-white: #fff;
+  --c-black: #000;
 
-  /* heading sizes */
-  --heading-font-size-xxl: 55px;
-  --heading-font-size-xl: 44px;
-  --heading-font-size-l: 34px;
-  --heading-font-size-m: 27px;
-  --heading-font-size-s: 24px;
-  --heading-font-size-xs: 22px;
+  /* boilerplate aliases (blocks written against the stock names keep working) */
+  --background-color: var(--c-white);
+  --light-color: var(--c-grey);
+  --dark-color: var(--c-text);
+  --text-color: var(--c-text);
+  --link-color: var(--c-text);
+  --link-hover-color: var(--c-red);
+  --body-font-family: var(--font-system);
+  --heading-font-family: var(--font-brand);
 
-  /* nav height */
-  --nav-height: 64px;
+  /* Blocksy container model: 90vw (88vw under 690px), capped at 1700px; article shell 1150px */
+  --container-width: min(100%, 90vw);
+  --container-max: 1700px;
+  --shell-max: 1150px;
+
+  /* Elementor kit */
+  --e-container-max: 1420px;
+  --e-gap: 20px;
+
+  /* Blocksy header (type-1): the rows overlay the page, the header box itself is 0px tall */
+  --header-top-h: 51px;
+  --header-middle-h: 120px;
+  --logo-h: 50px;
+  --menu-items-spacing: 38px;
+  --nav-height: 0;
 }
 
-/* fallback fonts */
+/* metric-matched fallback (fonttools over BradescoSans-400-normal-live.woff2 vs local Arial) */
 @font-face {
-  font-family: roboto-condensed-fallback;
-  size-adjust: 88.82%;
-  src: local('Arial');
+  font-family: bradescosans-fallback;
+  size-adjust: 113.27%;
+  ascent-override: 86.52%;
+  descent-override: 20.75%;
+  line-gap-override: 0%;
+  src: local("Arial");
 }
 
-@font-face {
-  font-family: roboto-fallback;
-  size-adjust: 99.529%;
-  src: local('Arial');
-}
-
-@media (width >= 900px) {
+@media (width <= 999.98px) {
   :root {
-    /* body sizes */
-    --body-font-size-m: 18px;
-    --body-font-size-s: 16px;
-    --body-font-size-xs: 14px;
-
-    /* heading sizes */
-    --heading-font-size-xxl: 45px;
-    --heading-font-size-xl: 36px;
-    --heading-font-size-l: 28px;
-    --heading-font-size-m: 22px;
-    --heading-font-size-s: 20px;
-    --heading-font-size-xs: 18px;
+    --header-middle-h: 70px;
+    --logo-h: 42px;
   }
+}
+
+@media (width <= 689.98px) {
+  :root {
+    --container-width: min(100%, 88vw);
+    --header-middle-h: 100px;
+  }
+}
+
+/* ---- document reset (canon base) ---- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
 body {
   display: none;
   margin: 0;
-  background-color: var(--background-color);
-  color: var(--text-color);
-  font-family: var(--body-font-family);
-  font-size: var(--body-font-size-m);
-  line-height: 1.6;
+  background-color: var(--c-white);
+  color: var(--c-text);
+  font-family: var(--font-system);
+  font-size: 16px;
+  line-height: 1.65;
+  font-weight: 400;
 }
 
 body.appear {
   display: block;
 }
 
+/* chrome reservation: the Blocksy rows overlay the page, so the header box is 0px tall (#108) */
 header {
+  position: relative;
   height: var(--nav-height);
+  z-index: 50;
 }
 
 header .header,
@@ -104,20 +129,18 @@ h3,
 h4,
 h5,
 h6 {
-  margin-top: 0.8em;
-  margin-bottom: 0.25em;
-  font-family: var(--heading-font-family);
-  font-weight: 600;
-  line-height: 1.25;
+  margin: 0;
+  color: var(--c-text);
+  font-family: var(--font-brand);
+  font-weight: 400;
   scroll-margin: 40px;
 }
 
-h1 { font-size: var(--heading-font-size-xxl); }
-h2 { font-size: var(--heading-font-size-xl); }
-h3 { font-size: var(--heading-font-size-l); }
-h4 { font-size: var(--heading-font-size-m); }
-h5 { font-size: var(--heading-font-size-s); }
-h6 { font-size: var(--heading-font-size-xs); }
+p,
+a,
+span {
+  font-family: var(--font-brand);
+}
 
 p,
 dl,
@@ -125,25 +148,26 @@ ol,
 ul,
 pre,
 blockquote {
-  margin-top: 0.8em;
-  margin-bottom: 0.25em;
+  margin: 0;
 }
 
-code,
-pre {
-  font-size: var(--body-font-size-s);
+ul {
+  padding: 0;
+  list-style: none;
 }
 
-pre {
-  padding: 16px;
-  border-radius: 8px;
-  background-color: var(--light-color);
-  overflow-x: auto;
-  white-space: pre;
+sup {
+  position: relative;
+  top: -0.5em;
+  font-size: 75%;
+  line-height: 0;
+  vertical-align: baseline;
 }
 
-main > div {
-  margin: 40px 16px;
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
 
 input,
@@ -153,42 +177,80 @@ button {
   font: inherit;
 }
 
+button {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
 /* links */
 a:any-link {
-  color: var(--link-color);
+  color: inherit;
   text-decoration: none;
   overflow-wrap: break-word;
 }
 
-a:hover {
-  color: var(--link-hover-color);
-  text-decoration: underline;
+/* ---- containers: Blocksy .container and the Elementor boxed inner (.e-inner) ---- */
+.container,
+.e-inner {
+  width: var(--container-width);
+  max-width: var(--container-max);
+  margin-right: auto;
+  margin-left: auto;
 }
 
-/* buttons */
+/* ---- buttons: Elementor kit pill (canon .btn) on the boilerplate button convention ---- */
 p.button-wrapper {
-  margin: 12px 0;
+  margin: 0;
 }
 
 a.button:any-link,
 button.button {
-  box-sizing: border-box;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  display: inline-block;
   max-width: 100%;
   margin: 0;
-  border: 2px solid transparent;
-  border-radius: 2.4em;
-  padding: 0.5em 1.2em;
-  font: inherit;
+  border: 0;
+  border-radius: 100px;
+  padding: 13px 85px;
+  background-color: var(--c-button);
+  color: var(--c-white);
+  font-family: var(--font-brand);
+  font-size: 16px;
+  line-height: 16px;
   font-weight: 500;
-  line-height: 1.25;
+  letter-spacing: 2px;
+  text-align: center;
   text-decoration: none;
   cursor: pointer;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+}
+
+a.button:hover,
+a.button:focus,
+button.button:hover,
+button.button:focus {
+  background-color: var(--c-button-hover);
+  color: var(--c-white);
+}
+
+a.button.upper,
+button.button.upper {
+  text-transform: uppercase;
+}
+
+a.button.narrow,
+button.button.narrow {
+  padding: 13px 40px;
 }
 
 a.button[aria-disabled="true"],
@@ -197,85 +259,82 @@ button.button:disabled {
   pointer-events: none;
 }
 
-a.button.primary,
-button.button.primary {
-  border-color: var(--text-color);
-  background-color: var(--text-color);
-  color: var(--background-color);
+@media (width <= 767px) {
+  a.button:any-link,
+  button.button,
+  a.button.narrow,
+  button.button.narrow {
+    padding: 10px 30px;
+    font-size: 12px;
+    line-height: 12px;
+  }
 }
 
-a.button.primary:hover,
-a.button.primary:focus-visible,
-button.button.primary:hover,
-button.button.primary:focus-visible {
-  border-color: var(--dark-color);
-  background-color: var(--dark-color);
-  color: var(--light-color);
+/* Experience Workspace edit mode: repaint CTAs from their authored marks */
+.prosemirror-editor p > :is(strong, em) > a:any-link,
+.prosemirror-editor p > a:any-link:has(> :is(strong, em):only-child) {
+  display: inline-block;
+  border-radius: 100px;
+  padding: 13px 85px;
+  background-color: var(--c-button);
+  color: var(--c-white);
+  font-size: 16px;
+  line-height: 16px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-align: center;
 }
 
-a.button.primary[aria-disabled="true"],
-a.button.primary[aria-disabled="true"]:hover,
-a.button.primary[aria-disabled="true"]:focus-visible,
-button.button.primary:disabled,
-button.button.primary:disabled:hover,
-button.button.primary:disabled:focus-visible {
-  background-color: var(--light-color);
-  border-color: var(--light-color);
-  color: var(--dark-color);
+.prosemirror-editor p > a:any-link > :is(strong, em) {
+  font-weight: inherit;
+  font-style: inherit;
 }
 
-a.button.secondary,
-button.button.secondary {
-  border-color: var(--text-color);
-  background-color: transparent;
-  color: var(--text-color);
+a .prosemirror-editor a:any-link {
+  color: inherit;
+  text-decoration: none;
 }
 
-a.button.secondary:hover,
-a.button.secondary:focus-visible,
-button.button.secondary:hover,
-button.button.secondary:focus-visible {
-  border-color: var(--dark-color);
-  background-color: var(--light-color);
-  color: var(--dark-color);
+/* ---- section scaffold: block wrappers are full-bleed (Elementor e-con-full), blocks emit
+   their own .e-inner; default content sits in the Blocksy container ---- */
+main {
+  display: block;
 }
 
-a.button.secondary[aria-disabled="true"],
-a.button.secondary[aria-disabled="true"]:hover,
-a.button.secondary[aria-disabled="true"]:focus-visible,
-button.button.secondary:disabled,
-button.button.secondary:disabled:hover,
-button.button.secondary:disabled:focus-visible {
-  background-color: var(--light-color);
-  border-color: var(--light-color);
-  color: var(--dark-color);
+/* chrome-only pages (metadata `Theme: chrome-only`, e.g. /en/benefits-guide whose live main is empty): the live
+   body is a flex column of min-height 100vh and main grows to push the footer to the viewport bottom — live 1440
+   main 117 px / footer at y 117 of 900; 360 main 0 (foundation-requests.md § unit 12, applied unit 20) */
+body.appear.chrome-only {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-/* high-impact call-to-action */
-a.button.accent,
-button.button.accent {
-  border-color: var(--link-color);
-  background-color: var(--link-color);
-  color: var(--background-color);
+body.chrome-only main {
+  flex: 1 0 auto;
 }
 
-a.button.accent:hover,
-a.button.accent:focus-visible,
-button.button.accent:hover,
-button.button.accent:focus-visible {
-  border-color: var(--link-hover-color);
-  background-color: var(--link-hover-color);
+main > .section {
+  margin: 0;
 }
 
-a.button.accent[aria-disabled="true"],
-a.button.accent[aria-disabled="true"]:hover,
-a.button.accent[aria-disabled="true"]:focus-visible,
-button.button.accent:disabled,
-button.button.accent:disabled:hover,
-button.button.accent:disabled:focus-visible {
-  background-color: var(--light-color);
-  border-color: var(--light-color);
-  color: var(--dark-color);
+main > .section > div {
+  margin: 0;
+  max-width: none;
+}
+
+main > .section > .default-content-wrapper {
+  width: var(--container-width);
+  max-width: var(--container-max);
+  margin: 0 auto;
+}
+
+main > .section:empty {
+  display: none;
+}
+
+main .section.grey {
+  background-color: var(--c-grey);
 }
 
 main img {
@@ -295,31 +354,392 @@ main img {
   width: 100%;
 }
 
-/* sections */
-main > .section {
-  margin: 40px 0;
+/* ---- section divider bars (Elementor spacer containers) ---- */
+.bar {
+  display: flex;
+  min-height: 19px;
+  margin-top: -1px;
+  background-color: var(--c-red-deep);
 }
 
-main > .section > div {
-  max-width: 1200px;
-  margin: auto;
-  padding: 0 24px;
-}
+@media (width <= 767px) {
+  .bar {
+    margin-top: 0;
+    background-image: url("img/mob-linha-degrade-1.jpg");
+  }
 
-main > .section:first-of-type {
-  margin-top: 0;
-}
-
-@media (width >= 900px) {
-  main > .section > div {
-    padding: 0 32px;
+  .bar-mobile-slim {
+    min-height: 15px;
+    margin-bottom: 40px;
   }
 }
 
-/* section metadata */
-main .section.light,
-main .section.highlight {
-  background-color: var(--light-color);
+/* ---- heading bands (Elementor boxed containers with a centred h2) ---- */
+.band-heading {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  min-height: 180px;
+  padding: 0 10px;
+}
+
+.band-heading .e-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.band-heading-title {
+  max-width: 100%;
+  margin: 0 0 19.6px;
+  color: var(--c-text);
+  font-size: 32px;
+  line-height: 37px;
+  font-weight: 400;
+  text-align: center;
+}
+
+@media (width <= 1080px) {
+  .band-heading {
+    min-height: 0;
+    padding: 20px 0;
+  }
+
+  .band-heading-title {
+    font-size: 28px;
+  }
+}
+
+@media (width <= 767px) {
+  .band-heading-pad40 {
+    padding: 40px 0;
+  }
+
+  .band-heading-title {
+    margin-bottom: 16.6px;
+    font-size: 22px;
+    line-height: 29px;
+  }
+}
+
+/* ---- blog chrome (canon back-port: the blog-bar block shared by the article and listing
+   templates — .ar-blogbar, .ar-blogmenu-*, .ar-back, .fixed; palette_6 #f2f5f7) ---- */
+.ar-blogbar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #f2f5f7;
+  font-family: var(--font-brand);
+}
+
+.ar-blogbar-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.ar-blogmenu {
+  --items: 2;
+
+  position: relative;
+}
+
+.ar-blogmenu-links {
+  display: grid;
+  position: relative;
+  grid-template-columns: repeat(var(--items), auto);
+  justify-content: end;
+  max-width: 1150px;
   margin: 0;
-  padding: 40px 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ar-blogmenu-links li {
+  margin: 0 10px;
+}
+
+.ar-blogmenu-links li a {
+  display: block;
+  height: 70px;
+  padding: 0 0.5em;
+  color: #333;
+  font-size: 18px;
+  line-height: 70px;
+  text-align: center;
+  text-transform: capitalize;
+  white-space: nowrap;
+  transition: color 0.4s;
+}
+
+.ar-blogmenu-links li a:hover {
+  color: #000;
+}
+
+.ar-blogmenu-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 7px;
+  margin: 0;
+  background: #cc092f;
+  pointer-events: none;
+  transition: transform 0.3s ease, width 0.3s ease;
+}
+
+.ar-blogmenu-links li.ar-blogmenu-saved a {
+  position: relative;
+  padding-right: 0;
+  padding-left: 38px;
+}
+
+.ar-blogmenu-saved a::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: calc(50% - 14px);
+  left: 15px;
+  width: 18px;
+  height: 30px;
+  background-image: url("img/bookmark.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 18px;
+}
+
+.ar-blogmenu-counter.hidden {
+  display: none;
+}
+
+.ar-blogmenu-toggle {
+  display: none;
+}
+
+.ar-back {
+  display: inline-flex;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  z-index: 5;
+  align-items: center;
+  gap: 5px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 4px 9px;
+  background: #fff;
+  color: #000;
+  font-size: 10px;
+  line-height: 1.65;
+  font-weight: 400;
+  letter-spacing: 1px;
+  text-decoration: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transform: translateY(-50%);
+  transition: background-color 0.2s ease;
+}
+
+/* live .VoltarLink:hover sets an undefined --gray-4 (pill goes transparent); observed hover */
+.ar-back:hover {
+  background-color: transparent;
+  color: #ba0a29;
+}
+
+.ar-blogbar.fixed {
+  position: fixed;
+  top: 120px;
+  left: 0;
+  z-index: 2;
+  width: 100%;
+  background: #f2f5f7;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 10%), inset 0 2px 8px rgb(0 0 0 / 10%);
+}
+
+@media (width <= 999px) {
+  .ar-blogbar.fixed {
+    top: 70px;
+  }
+}
+
+@media (width <= 900px) {
+  .ar-blogmenu {
+    --items: 4;
+  }
+
+  .ar-blogmenu-links li.ar-blogmenu-saved a {
+    padding-left: 30px;
+  }
+
+  .ar-blogmenu-saved a::before {
+    top: calc(50% - 12px);
+    left: 8px;
+    width: 20px;
+    height: 26px;
+    background-size: 15px;
+  }
+}
+
+@media (width <= 768px) {
+  .ar-blogmenu {
+    padding: 0;
+  }
+
+  .ar-blogmenu-toggle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: none;
+    padding: 12px 0;
+    background: transparent;
+    color: #333;
+    font-size: 16px;
+    line-height: 1.65;
+    font-weight: 500;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+
+  .ar-blogmenu-toggle:hover {
+    color: #cc092f;
+  }
+
+  .ar-hamburger {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 24px;
+    height: 24px;
+  }
+
+  .ar-hamburger span {
+    display: block;
+    position: absolute;
+    width: 24px;
+    height: 2px;
+    border-radius: 1px;
+    background: currentcolor;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .ar-hamburger span:nth-child(1) {
+    top: 4px;
+  }
+
+  .ar-hamburger span:nth-child(2) {
+    top: 11px;
+  }
+
+  .ar-hamburger span:nth-child(3) {
+    top: 18px;
+  }
+
+  .ar-blogmenu-toggle.active .ar-hamburger span:nth-child(1) {
+    left: 6px;
+    transform: rotate(45deg) translateY(10px);
+  }
+
+  .ar-blogmenu-toggle.active .ar-hamburger span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .ar-blogmenu-toggle.active .ar-hamburger span:nth-child(3) {
+    left: 6px;
+    transform: rotate(-45deg) translateY(-10px);
+  }
+
+  .ar-blogmenu-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    z-index: 1000;
+    flex-direction: column;
+    grid-template-columns: none;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    background: #fff;
+    box-shadow: 0 8px 16px rgb(0 0 0 / 12%);
+  }
+
+  .ar-blogmenu-links.active {
+    display: flex;
+  }
+
+  .ar-blogmenu-links li {
+    margin: 0;
+  }
+
+  .ar-blogmenu-links li a {
+    display: block;
+    height: auto;
+    padding: 10px 20px;
+    color: #535353;
+    font-size: 16px;
+    line-height: 1.5;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-align: left;
+    text-transform: uppercase;
+    white-space: normal;
+    transition: all 0.2s;
+  }
+
+  .ar-blogmenu-links li a:hover {
+    background-color: #f8f8f8;
+    color: #cc092f;
+  }
+
+  .ar-blogmenu-links li.ar-blogmenu-saved a {
+    padding-right: 0;
+    padding-left: 38px;
+  }
+
+  .ar-blogmenu-saved a::before {
+    top: calc(50% - 13px);
+    left: 15px;
+  }
+
+  .ar-blogmenu-line {
+    display: none;
+  }
+
+  .ar-back {
+    right: 0;
+    left: auto;
+  }
+}
+
+@media (width <= 689px) {
+  .ar-blogbar.fixed {
+    top: 100px;
+  }
+}
+
+.favorite-btn.favorited svg {
+  fill: #cc092f;
+  transition: all 0.3s linear;
+}
+
+.favorite-btn.pulse {
+  animation: pulse 0.3s ease;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
+  }
 }

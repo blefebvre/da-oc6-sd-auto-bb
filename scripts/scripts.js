@@ -5,6 +5,7 @@ import {
   decorateSections,
   decorateBlocks,
   decorateTemplateAndTheme,
+  getMetadata,
   waitForFirstImage,
   loadSection,
   loadSections,
@@ -156,12 +157,31 @@ export function decorateMain(main) {
 }
 
 /**
+ * Locale + chrome switches (stardust/runtime-contract.json § chrome):
+ *  - metadata `locale` (en|es|pt; default from the first path segment) → <html lang> and
+ *    body.locale-<x>; header/footer load /<locale>/nav and /<locale>/footer for es|pt
+ *  - metadata `fdic-row: off` → body.hide-fdic-row (the FDIC top row of the header)
+ *  - metadata `footer-badges: off` → body.hide-footer-badges (the footer badge strip)
+ *  Default = shown; program/article/listing templates set both to off.
+ * @param {Document} doc The document
+ */
+function decorateLocaleAndChrome(doc) {
+  const segment = window.location.pathname.split('/')[1];
+  const locale = getMetadata('locale') || (['es', 'pt'].includes(segment) ? segment : 'en');
+  doc.documentElement.lang = locale;
+  doc.body.classList.add(`locale-${locale}`);
+  const off = (key) => ['off', 'hidden', 'false', 'no'].includes(getMetadata(key).toLowerCase());
+  if (off('fdic-row')) doc.body.classList.add('hide-fdic-row');
+  if (off('footer-badges')) doc.body.classList.add('hide-footer-badges');
+}
+
+/**
  * Loads everything needed to get to LCP.
  * @param {Element} doc The container element
  */
 async function loadEager(doc) {
-  document.documentElement.lang = 'en';
   decorateTemplateAndTheme();
+  decorateLocaleAndChrome(doc);
   const main = doc.querySelector('main');
   if (main) {
     decorateMain(main);

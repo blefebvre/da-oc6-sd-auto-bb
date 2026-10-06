@@ -1,0 +1,27 @@
+/* ld-band-heading — the band box is the foundation .band-heading (added by the block JS);
+   the title ramp is lifted from stardust/prototypes/canon.css .band-heading__title
+   (32/37 → 28 ≤1080 → 22/29 ≤767), applied by descendant selector (EW2). */
+
+.ld-band-heading .e-inner :is(h1, h2, h3, h4, p) {
+  max-width: 100%;
+  margin: 0 0 19.6px;
+  color: var(--c-text);
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 37px;
+  text-align: center;
+}
+
+@media (width <= 1080px) {
+  .ld-band-heading .e-inner :is(h1, h2, h3, h4, p) {
+    font-size: 28px;
+  }
+}
+
+@media (width <= 767px) {
+  .ld-band-heading .e-inner :is(h1, h2, h3, h4, p) {
+    margin-bottom: 16.6px;
+    font-size: 22px;
+    line-height: 29px;
+  }
+}

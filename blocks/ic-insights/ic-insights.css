@@ -1,0 +1,292 @@
+/* ic-insights — values lifted from stardust/prototypes/en-investments-content.css (.ic-insights,
+   .ic-insights__title, .ic-loop, .ic-item*, the wpcode .post-meta / .post-category-alt pill, the
+   "CSS dos Favoritos" block; ≤1080 2 columns, ≤767 1 column + 70/130 meta split). The 1150 px
+   shell is --content-width on e-con f7af171. Widget-level text → brand font. */
+
+.ic-insights {
+  --ic-insights-shell: var(--shell-max);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 70px 20px 100px;
+}
+
+/* variant `wide` (es/pt listing siblings): the live loop e-con is 1280 px wide where the en
+   archetype is 1150 — listing-variance.json probes.loop rect w 1150→1280, image w 363→407 */
+.ic-insights.wide {
+  --ic-insights-shell: 1280px;
+}
+
+.ic-insights .ic-insights-inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--e-gap);
+}
+
+@media (width >= 768px) {
+  .ic-insights .ic-insights-inner {
+    max-width: var(--ic-insights-shell);
+  }
+}
+
+/* heading widget: line-height 1 */
+.ic-insights .ic-insights-title {
+  margin: 0;
+  padding: 0;
+  color: var(--c-text);
+  font-size: 24px;
+  line-height: 1;
+  font-weight: 400;
+}
+
+.ic-insights .ic-insights-title > *,
+.ic-insights .ic-item-title > *,
+.ic-insights .ic-item-category > *,
+.ic-insights .ic-item-date-text > *,
+.ic-insights .ic-item-excerpt > * {
+  margin: 0;
+  color: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  font-weight: inherit;
+}
+
+/* loop grid 08b96a1: 3 / 2 / 1 columns, grid-auto-rows 1fr, 30 px gaps */
+.ic-insights .ic-loop {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-auto-rows: 1fr;
+  gap: 30px;
+}
+
+.ic-insights .ic-item {
+  position: relative;
+  font-family: var(--font-brand);
+  overflow-wrap: anywhere;
+}
+
+/* 889d643: the styled box — column, white, shadow, padding-bottom 20, height 100 % */
+.ic-insights .ic-item-box {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  height: 100%;
+  padding: 0 0 20px;
+  background-color: var(--c-white);
+  box-shadow: 0 10px 10px 0 rgb(0 0 0 / 18%);
+}
+
+/* 2374ce8 featured image + wpcode rule: 100 % wide, 200 px, cover */
+.ic-insights .ic-item-media > :is(p, div, a) {
+  margin: 0;
+}
+
+.ic-insights .ic-item-media a {
+  display: block;
+  color: var(--c-text);
+  transition: color 0.3s ease;
+}
+
+.ic-insights .ic-item-media a:hover {
+  color: var(--c-button);
+}
+
+.ic-insights .ic-item-media img {
+  display: block;
+  width: 100%;
+  min-width: 100%;
+  max-width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+/* a934a99: row, space-between; bb51039 65 % | a02640f 135 %, both shrink */
+.ic-insights .ic-item-meta {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.ic-insights .ic-item-date-col {
+  display: flex;
+  flex-direction: column;
+  width: 65%;
+  min-width: 0;
+}
+
+.ic-insights .ic-item-cat-col {
+  display: flex;
+  flex-direction: column;
+  width: 135%;
+  min-width: 0;
+}
+
+/* 1304658: shortcode widget 95 % wide, its container margin 15 0 0 20; 15 px, body 1.65 */
+.ic-insights .ic-item-date {
+  width: 95%;
+  max-width: 95%;
+  color: var(--c-text);
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.ic-insights .ic-item-date-text {
+  margin: 15px 0 0 20px;
+}
+
+/* 0591548: container margin 15 20 0 0 around .post-meta (its own margin 0 0 12) */
+.ic-insights .ic-item-cat {
+  margin: 15px 20px 0 0;
+}
+
+.ic-insights .ic-item-meta-pill {
+  display: flex;
+  position: relative;
+  justify-content: end;
+  margin: 0 0 12px;
+  color: var(--c-text);
+  font-size: 14px;
+  line-height: 21px;
+  font-weight: 400;
+}
+
+.ic-insights .ic-item-category {
+  position: relative;
+  margin: 0;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  padding: 0 8px 0 25px;
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.ic-insights .ic-item-category::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  width: 10px;
+  height: 10px;
+  border-radius: 10px;
+  background: var(--c-red);
+}
+
+.ic-insights .ic-item-category a:any-link {
+  color: var(--c-text);
+  text-decoration: none;
+}
+
+/* b14021b: title container padding 10 40 10 20; h3 21/27, hover primary */
+.ic-insights .ic-item-title-wrap {
+  padding: 10px 40px 10px 20px;
+}
+
+.ic-insights .ic-item-title {
+  margin: 0;
+  padding: 0;
+  color: var(--c-text);
+  font-size: 21px;
+  line-height: 27px;
+  font-weight: 400;
+}
+
+.ic-insights .ic-item-title a:any-link {
+  color: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  text-decoration: none;
+}
+
+.ic-insights .ic-item-title a:hover,
+.ic-insights .ic-item-title a:focus {
+  color: var(--c-red);
+}
+
+/* dfe2ace: excerpt container padding 0 60 0 20, 16/22 */
+.ic-insights .ic-item-excerpt {
+  margin: 0;
+  padding: 0 60px 0 20px;
+  color: var(--c-text);
+  font-size: 16px;
+  line-height: 22px;
+}
+
+/* e7759d1: absolute favourite shortcode, right 10 bottom 5 */
+.ic-insights .ic-item-fav {
+  position: absolute;
+  right: 10px;
+  bottom: 5px;
+}
+
+.ic-insights .favorite-container {
+  display: inline-block;
+  margin: 0;
+}
+
+.ic-insights .favorite-btn {
+  width: 32px;
+  height: 32px;
+  border: none;
+  padding: 0;
+  background: none;
+  cursor: pointer;
+  transition: all 0.3s linear;
+}
+
+.ic-insights .favorite-btn:hover {
+  transform: scale(1.1);
+}
+
+.ic-insights .favorite-btn svg {
+  width: 100%;
+  height: 100%;
+  fill: #666;
+}
+
+.ic-insights .favorite-btn:hover svg {
+  fill: var(--c-red);
+}
+
+.ic-insights .favorite-icon {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--c-white);
+}
+
+@media (width <= 1080px) {
+  .ic-insights .ic-loop {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (width <= 767px) {
+  .ic-insights .ic-insights-title {
+    font-size: 20px;
+  }
+
+  .ic-insights .ic-loop {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+
+  .ic-insights .ic-item-date-col {
+    width: 70%;
+  }
+
+  .ic-insights .ic-item-cat-col {
+    width: 130%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ic-insights .favorite-btn,
+  .ic-insights .favorite-btn.pulse,
+  .ic-insights .ic-item-title a,
+  .ic-insights .ic-item-media a {
+    animation: none;
+    transition: none;
+  }
+}

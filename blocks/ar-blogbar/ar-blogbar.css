@@ -1,0 +1,53 @@
+/* ar-blogbar — the paint is the shared layer (styles/styles.css § blog chrome). Here: the shell
+   cap on the block's own .e-inner (--content-width 1150px at ≥768, e-con 1472ad4), the authored
+   list as the grid's content (the wrapper div.ar-blogmenu-links carries the frozen class), and
+   the authored back-link paragraph inside the div.ar-back pill. */
+
+.ar-blogbar .e-inner {
+  position: relative;
+}
+
+@media (width >= 768px) {
+  .ar-blogbar .e-inner {
+    max-width: var(--shell-max);
+  }
+}
+
+/* the authored <ul> is the grid's content, not a box of its own */
+.ar-blogbar .ar-blogmenu-links :is(ul, ol) {
+  display: contents;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ar-blogbar .ar-blogmenu-links li {
+  display: block;
+}
+
+/* the back link moves as its paragraph into the pill (div.ar-back carries the live .VoltarLink paint) */
+.ar-blogbar .ar-back p {
+  margin: 0;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+}
+
+.ar-blogbar .ar-back a:any-link {
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  text-decoration: none;
+}
+
+.ar-blogbar .ar-blogmenu-label {
+  display: inline;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ar-blogbar .ar-hamburger span,
+  .ar-blogbar .ar-blogmenu-links li a,
+  .ar-blogbar .ar-back {
+    transition: none;
+  }
+}

@@ -1,0 +1,221 @@
+/* ac-hero — values lifted from stardust/prototypes/en-visa-gold-activation.css (.ac-hero*,
+   .ac-line, .ac-widget / .ac-body shell; breakpoints 1380 / 1080 / 767 as on live). The three
+   inner columns are width 100% / flex 0 1 auto / min-width 0 whose paddings (10 / 20 / 0) let the
+   browser reproduce the live 423 | 423 | 410 split. Photos are decorative (files in this folder).
+   EW2: authored texts are styled by wrapper-DESCENDANT selectors (the editor swap nests them). */
+
+.ac-hero {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+  min-height: 736px;
+  max-width: 100%;
+  padding: 0;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.ac-hero.gold {
+  background-image: url("header-desk-1-952e43b5.webp");
+}
+
+/* tier photos (live post-20373 / post-21555 rule 2ee2b11: same positioning as gold, own pair) */
+.ac-hero.infinite {
+  background-image: url("Header-copiar-1-scaled-e257116e.webp");
+}
+
+.ac-hero.signature {
+  background-image: url("header-desk-2-d9148768.webp");
+}
+
+/* boxed row acb2f14: inner = Blocksy container (foundation .e-inner), row, gap 20 */
+.ac-hero .ac-hero-inner {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.ac-hero .ac-hero-spacer,
+.ac-hero .ac-hero-media,
+.ac-hero .ac-hero-text {
+  display: flex;
+  position: relative;
+  flex: 0 1 auto;
+  flex-direction: column;
+  width: 100%;
+  min-width: 0;
+}
+
+/* ce8a420: default e-con padding */
+.ac-hero .ac-hero-spacer {
+  padding: 10px;
+}
+
+/* 4447fcf */
+.ac-hero .ac-hero-media {
+  justify-content: center;
+  gap: 0;
+  padding: 0 20px 0 0;
+}
+
+.ac-hero .ac-widget {
+  position: relative;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.ac-hero .ac-hero-media .ac-widget {
+  width: 100%;
+  text-align: center;
+}
+
+.ac-hero .ac-hero-media img {
+  display: inline-block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border: 0;
+  vertical-align: middle;
+}
+
+.ac-hero .ac-body {
+  font-family: var(--font-brand);
+}
+
+.ac-hero .ac-body p {
+  margin: 0;
+  color: var(--c-white);
+  font-weight: 300;
+}
+
+/* 699c702 */
+.ac-hero .ac-hero-text {
+  justify-content: center;
+  gap: 0;
+  padding: 0;
+}
+
+/* f196484: 45/50 w300 */
+.ac-hero .ac-hero-title p {
+  font-size: 45px;
+  line-height: 50px;
+}
+
+/* cc5a9e7: 28/33 w300, container padding-top 14 */
+.ac-hero .ac-hero-sub p {
+  font-size: 28px;
+  line-height: 33px;
+}
+
+.ac-hero .ac-hero-sub .ac-body {
+  padding: 14px 0 0;
+}
+
+/* red line (5356ebf): 19px, #CC092F, margin-top -1px; gradient image ≤767 (bg-image only) */
+.ac-hero + .ac-line {
+  display: flex;
+  width: 100%;
+  min-height: 19px;
+  margin-top: -1px;
+  background-color: var(--c-red);
+}
+
+@media (width <= 1380px) {
+  .ac-hero .ac-hero-title p {
+    font-size: 32px;
+    line-height: 40px;
+  }
+
+  .ac-hero .ac-hero-sub p {
+    font-size: 23px;
+    line-height: 28px;
+  }
+}
+
+@media (width <= 1080px) {
+  .ac-hero.gold,
+  .ac-hero.infinite,
+  .ac-hero.signature {
+    background-position: -180px 0;
+    background-size: cover;
+  }
+
+  .ac-hero .ac-hero-title p {
+    font-size: 23px;
+    line-height: 28px;
+  }
+
+  .ac-hero .ac-hero-sub p {
+    font-size: 16px;
+    line-height: 23px;
+  }
+}
+
+@media (width <= 767px) {
+  /* acb2f14 ≤767: padding sits OUTSIDE the Blocksy-mapped inner (live inner = 88vw = 280) */
+  .ac-hero {
+    min-height: 0;
+    padding: 0 40px 25px;
+  }
+
+  .ac-hero.gold {
+    background-image: url("Header-mob-1-d452a182.webp");
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .ac-hero.infinite {
+    background-image: url("HeaderPrancheta-2-1-1.webp");
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .ac-hero.signature {
+    background-image: url("Header-mob-2.webp");
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  /* --flex-wrap-mobile */
+  .ac-hero .ac-hero-inner {
+    flex-wrap: wrap;
+  }
+
+  .ac-hero .ac-hero-spacer {
+    min-height: 235px;
+    margin: 0;
+    padding: 0;
+  }
+
+  .ac-hero .ac-hero-media {
+    padding: 0 35px;
+  }
+
+  .ac-hero .ac-hero-text {
+    padding: 0;
+  }
+
+  /* measured live 360 (measure.mjs): the title p computes weight 400 at ≤767, the sub p
+     stays 300; no captured stylesheet names the rule */
+  .ac-hero .ac-hero-title p {
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 35px;
+  }
+
+  .ac-hero .ac-hero-sub p {
+    font-size: 20px;
+    line-height: 25px;
+  }
+
+  .ac-hero + .ac-line {
+    background-image: url("mob-linha-degrade-1.jpg");
+  }
+}

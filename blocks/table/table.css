@@ -1,0 +1,40 @@
+/* table — Blocksy default table paint as measured on bradescobank.com (the page's own
+   .reits-table style block is wpautop-mangled and dead on live; stardust/prototypes/en-reits.css). */
+
+.table table {
+  width: 100%;
+  max-width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  empty-cells: show;
+}
+
+.table table,
+.table th,
+.table td {
+  border: 1px solid #e1e8ed;
+  font-size: 16px;
+}
+
+.table th {
+  padding: 0.7em 1em;
+  font-weight: 600;
+}
+
+/* the pipeline wraps cell text in <p>: the paragraph takes the cell padding and fills the cell
+   (percentage height resolves against the td in Chrome) with its content centred, so it occupies
+   the same box as live's bare-text <td> while staying the editable element */
+.table td {
+  height: 1px; /* lets the paragraph's percentage height resolve against the final cell height */
+  padding: 0;
+}
+
+.table :is(th, td) p {
+  margin: 0;
+}
+
+.table td p {
+  height: 100%;
+  padding: 0.7em 1em;
+  align-content: center;
+}

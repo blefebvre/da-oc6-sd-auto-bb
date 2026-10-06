@@ -1,0 +1,131 @@
+/* pb-con — values lifted from stardust/prototypes/en-personal-bank.css (.pb-services, .pb-tile*,
+   mobile variant ≤767). Tile photos are decorative (CSS, files in this folder); the live
+   container has no overflow clip so the hover-scaled tile paints outside it. */
+
+.pb-con .pb-con-services {
+  display: flex;
+  flex-direction: row;
+  gap: 5px; /* live: 5 × 284px tiles + 4 × 5px = 1440 */
+  min-height: 620px;
+  padding: 60px 0 0;
+}
+
+.pb-con .pb-con-tile {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 100%;
+  min-width: 0;
+  overflow: hidden;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: inherit;
+  text-decoration: none;
+}
+
+.pb-con .pb-con-tile:hover {
+  transform: scale(1.1); /* live: --e-con-transform-scale 1.1 on :hover (all 5 desktop tiles) */
+}
+
+.pb-con .pb-con-tile::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  opacity: 0.96;
+  background-image: url("retangulo-204.png");
+  background-position: bottom center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.pb-con .pb-con-tile-1::before {
+  opacity: 1;
+  background-size: cover;
+}
+
+.pb-con .pb-con-tile-1 { background-image: url("bg-private-sec-5-45bd0a5b.jpg"); }
+.pb-con .pb-con-tile-2 { background-image: url("cbd-1-6f695ee6.jpg"); }
+.pb-con .pb-con-tile-3 { background-image: url("bg-private-sec-1-c6e2db7a.jpg"); }
+.pb-con .pb-con-tile-4 { background-image: url("bg-private-sec-3-7fb35855.jpg"); }
+.pb-con .pb-con-tile-5 { background-image: url("bg-private-sec-2-21a17b7b.jpg"); }
+
+.pb-con .pb-con-tile-title-wrap {
+  position: relative;
+  z-index: 1;
+  padding: 0 0 40px;
+}
+
+.pb-con .pb-con-tile-title {
+  margin: 0;
+  color: var(--c-white);
+  font-size: 26px;
+  font-weight: 500;
+  line-height: 40px;
+  text-align: center;
+}
+
+.pb-con .pb-con-tile-2 .pb-con-tile-title {
+  line-height: 32px;
+}
+
+@media (width <= 1080px) {
+  .pb-con .pb-con-services {
+    flex-direction: column;
+  }
+}
+
+@media (width <= 767px) {
+  .pb-con .pb-con-services {
+    gap: 5px;
+    min-height: 850px;
+  }
+
+  .pb-con .pb-con-tile {
+    min-height: 200px;
+  }
+
+  .pb-con .pb-con-tile::before {
+    background-size: cover;
+  }
+
+  .pb-con .pb-con-tile-1 {
+    margin: 0 0 20px;
+    background-image: url("bg-afluent-mob-5.jpg");
+  }
+
+  .pb-con .pb-con-tile-2 {
+    margin: 0 0 20px;
+  }
+
+  .pb-con .pb-con-tile-3 {
+    margin: 0;
+    background-image: url("bg-afluente-mob-2.jpg");
+  }
+
+  .pb-con .pb-con-tile-4 {
+    margin: 20px 0 0;
+    background-image: url("bg-afluente-mob-1.jpg");
+  }
+
+  .pb-con .pb-con-tile-5 {
+    margin: 20px 0;
+    background-image: url("bg-afluent-mob-3.jpg");
+  }
+
+  /* pt: the live mobile tile band is pt's own container (d09ff92) — tile 5 follows tile 4 at the 5 px
+     gap, no 20 px top margin (live 1160 vs the archetype's 1180, unit 19 measure u19-m10) */
+  :lang(pt) .pb-con .pb-con-tile-5 {
+    margin: 0 0 20px;
+  }
+
+  .pb-con .pb-con-tile-title-wrap {
+    padding-bottom: 20px;
+  }
+
+  .pb-con .pb-con-tile-title {
+    font-size: 22px;
+  }
+}
